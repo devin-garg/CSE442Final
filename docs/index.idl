@@ -1,35 +1,55 @@
 [meta title:"The Shortest Splitline Algorithm For Gerrymandering" description:"Short description of your project" /]
 
+
+
+[section]
+
 [Header
-  title:"The Shortest Splitline Algorithm For Gerrymandering"
-  subtitle:"Welcome to Idyll. Open index.idl to start writing"
+  title:"The Shortest Splitline Algorithm"
+  subtitle:"Gerrymandering and Political Districting"
   author:"Devin Garg, Sofie Blankenship, Ryan Fok, Quan The Tran"
   authorLink:"https://idyll-lang.github.io" /]
 
-This is an Idyll file. Write text
-as you please in here. To add interactivity,
-you can add  different components to the text.
+The shortest splitline algorithm is a simple mechanical procedure that can be used for drawing lines to form political districts, based solely on population. Currently, political districts in the United States are drawn through gerrymandering, which is a practice intended to establish an advantage for a certain political party or group. By using the shortest splitline algorithm, political districts can be drawn based on the population of certain regions, thus eliminating the bias of gerrymandering. Though in some cases, this may not eliminate political advantages, it nevertheless is an unbiased method of political districting that would elicit less controversy.
 
-Here is how you can use a variable:
+# How the Algorithm Works
 
-[var name:"exampleVar" value:5 /]
+The algorithm takes as input the shape of a country/state/region, the locations of its inhabitants, and a positive number *dists* representing desired number of districts. It then divides that country/state/region into *dists* equipopulous districts.
 
-[Range min:0 max:10 value:exampleVar /]
-[Display value:exampleVar /]
+The pseudocode for the formal recursive algorithm is:
 
-```js
-var code = true;
+```
+shortestSplitline (region, dists) {
+  if dists = 1 then output the region as the district;
+  a = floor (dists / 2);
+  b = ceiling (dists / 2);
+  find the shortest splitline with a:b population ratio, breaking ties 
+  by the following criteria:
+    if exact-length tie, then use the line closest to North-South
+    orientation, and if still a tie, use Westernmost line.
+  draw the splitline and split region into regionA and regionB;
+  shortestSplitline (regionA, a);
+  shortestSplitline (regionB, b);
 ```
 
-And here is a custom component:
+## Step 1: Choose inputs
+We first have to decide how many districts we want to divide the region into, and the population for the district. The locations for each "inhabitant" is chosen at random.
 
-[CustomComponent /]
+## Step 2: Split the region into two districts
+We then find the shortest line that splits the region into two equipopulous districts and draw it.
 
-You can use standard html tags if a
-component with the same name
-doesn't exist.
+## Step 3: Recursively split districts into smaller districts
+If more districts are desired, we recurse by repeating step 2, using the subdistrict to find another shortest splitline that will further split it into two equipopulous districts.
 
-* *markdown* syntax is supported.
+# Performance Analysis
+The performance of the algorithm depends on the number of districts and the population of the region being drawn on. If more districts are desired, then the algorithm will have to recurse more, thus slowing the entire algorithm. Similarly, if there are more people living within a region, the algorithm has would have to examine more possible splitlines to find which is the shortest.
+
+# Conclusion
+The shortest splitline algorithm can be used for unbiased political districting, as a replacement for the practice of gerrymandering. Rather than purposely giving one political party of group an advantage, the algorithm disregards party affiliations by splitting regions based on population.
+
+[/section]
+
+[fixed]
 
 [var name:"state" value:0 /]
 
@@ -37,3 +57,5 @@ doesn't exist.
 [button onClick:`state++`]
   Click Me.
 [/button]
+
+[/fixed]

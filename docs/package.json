@@ -4,12 +4,12 @@
   "scripts": {
     "start": "idyll index.idl --defaultComponents=components/default --css styles.css --theme github --watch",
     "build": "idyll index.idl --defaultComponents=components/default --theme github --css styles.css; cp -r {images,fonts} build/;",
-    "deploy": "npm run build && gh-pages -d ./build"
+    "deploy": "npm run build && cp -r build/docs/"
   },
   "dependencies": {
-    "idyll": "^2.0.0",
-    "idyll-d3-component": "^2.0.0",
-    "d3": "^4.0.0"
+    "d3": "^4.0.0",
+    "idyll": "^2.0.10",
+    "idyll-d3-component": "^2.0.0"
   },
   "devDependencies": {
     "gh-pages": "^0.12.0"
