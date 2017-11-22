@@ -1,55 +1,11 @@
-require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"C:\\Users\\Ryan\\Documents\\College\\3rd Year\\Autumn\\CSE 442\\Final Project\\The-Shortest-Splitline-Algorithm-for-Gerrymandering\\docs\\components\\custom-d3-component.js":[function(require,module,exports){
-'use strict';
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var React = require('react');
-var D3Component = require('idyll-d3-component');
-var d3 = require('d3');
-
-var size = 600;
-
-var CustomD3Component = function (_D3Component) {
-  _inherits(CustomD3Component, _D3Component);
-
-  function CustomD3Component() {
-    _classCallCheck(this, CustomD3Component);
-
-    return _possibleConstructorReturn(this, (CustomD3Component.__proto__ || Object.getPrototypeOf(CustomD3Component)).apply(this, arguments));
-  }
-
-  _createClass(CustomD3Component, [{
-    key: 'initialize',
-    value: function initialize(node, props) {
-      var svg = this.svg = d3.select(node).append('svg');
-      svg.attr('viewBox', '0 0 ' + size + ' ' + size).style('width', '100%').style('height', 'auto');
-
-      svg.append('circle').attr('r', 20).attr('cx', Math.random() * size).attr('cy', Math.random() * size);
-    }
-  }, {
-    key: 'update',
-    value: function update(props) {
-      this.svg.selectAll('circle').transition().duration(750).attr('cx', Math.random() * size).attr('cy', Math.random() * size);
-    }
-  }]);
-
-  return CustomD3Component;
-}(D3Component);
-
-module.exports = CustomD3Component;
-
-},{"d3":"C:\\Users\\Ryan\\Documents\\College\\3rd Year\\Autumn\\CSE 442\\Final Project\\The-Shortest-Splitline-Algorithm-for-Gerrymandering\\docs\\node_modules\\d3\\build\\d3.node.js","idyll-d3-component":"C:\\Users\\Ryan\\Documents\\College\\3rd Year\\Autumn\\CSE 442\\Final Project\\The-Shortest-Splitline-Algorithm-for-Gerrymandering\\docs\\node_modules\\idyll-d3-component\\lib.js","react":"C:\\Users\\Ryan\\Documents\\College\\3rd Year\\Autumn\\CSE 442\\Final Project\\The-Shortest-Splitline-Algorithm-for-Gerrymandering\\docs\\node_modules\\react\\index.js"}],"C:\\Users\\Ryan\\Documents\\College\\3rd Year\\Autumn\\CSE 442\\Final Project\\The-Shortest-Splitline-Algorithm-for-Gerrymandering\\docs\\components\\default\\button.js":[function(require,module,exports){
+require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"C:\\Users\\Ryan\\Documents\\College\\3rd Year\\Autumn\\CSE 442\\Final Project\\The-Shortest-Splitline-Algorithm-for-Gerrymandering\\docs\\components\\default\\display.js":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -65,36 +21,54 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Button = function (_React$PureComponent) {
-  _inherits(Button, _React$PureComponent);
+var Format = require('d3-format');
 
-  function Button() {
-    _classCallCheck(this, Button);
+var Display = function (_React$PureComponent) {
+  _inherits(Display, _React$PureComponent);
 
-    return _possibleConstructorReturn(this, (Button.__proto__ || Object.getPrototypeOf(Button)).apply(this, arguments));
+  function Display(props) {
+    _classCallCheck(this, Display);
+
+    var _this = _possibleConstructorReturn(this, (Display.__proto__ || Object.getPrototypeOf(Display)).call(this, props));
+
+    _this.format = Format.format(props.format || '0.2f');
+    return _this;
   }
 
-  _createClass(Button, [{
+  _createClass(Display, [{
+    key: 'formatValue',
+    value: function formatValue(v) {
+      var t = typeof v === 'undefined' ? 'undefined' : _typeof(v);
+      switch (t) {
+        case 'object':
+          return JSON.stringify(v);
+        case 'number':
+          return this.format(v);
+        case 'string':
+        default:
+          return v;
+      }
+    }
+  }, {
     key: 'render',
     value: function render() {
+      var value = this.props.value;
+
+      var v = value !== undefined ? value : this.props.var;
       return _react2.default.createElement(
-        'button',
-        { onClick: this.props.onClick.bind(this) },
-        this.props.children
+        'span',
+        null,
+        this.formatValue(v)
       );
     }
   }]);
 
-  return Button;
+  return Display;
 }(_react2.default.PureComponent);
 
-Button.defaultProps = {
-  onClick: function onClick() {}
-};
+exports.default = Display;
 
-exports.default = Button;
-
-},{"react":"C:\\Users\\Ryan\\Documents\\College\\3rd Year\\Autumn\\CSE 442\\Final Project\\The-Shortest-Splitline-Algorithm-for-Gerrymandering\\docs\\node_modules\\react\\index.js"}],"C:\\Users\\Ryan\\Documents\\College\\3rd Year\\Autumn\\CSE 442\\Final Project\\The-Shortest-Splitline-Algorithm-for-Gerrymandering\\docs\\components\\default\\fixed.js":[function(require,module,exports){
+},{"d3-format":"C:\\Users\\Ryan\\Documents\\College\\3rd Year\\Autumn\\CSE 442\\Final Project\\The-Shortest-Splitline-Algorithm-for-Gerrymandering\\docs\\node_modules\\d3-format\\build\\d3-format.js","react":"C:\\Users\\Ryan\\Documents\\College\\3rd Year\\Autumn\\CSE 442\\Final Project\\The-Shortest-Splitline-Algorithm-for-Gerrymandering\\docs\\node_modules\\react\\index.js"}],"C:\\Users\\Ryan\\Documents\\College\\3rd Year\\Autumn\\CSE 442\\Final Project\\The-Shortest-Splitline-Algorithm-for-Gerrymandering\\docs\\components\\default\\fixed.js":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -205,7 +179,169 @@ var Header = function (_React$PureComponent) {
 
 exports.default = Header;
 
-},{"react":"C:\\Users\\Ryan\\Documents\\College\\3rd Year\\Autumn\\CSE 442\\Final Project\\The-Shortest-Splitline-Algorithm-for-Gerrymandering\\docs\\node_modules\\react\\index.js"}],"C:\\Users\\Ryan\\Documents\\College\\3rd Year\\Autumn\\CSE 442\\Final Project\\The-Shortest-Splitline-Algorithm-for-Gerrymandering\\docs\\node_modules\\base64-js\\index.js":[function(require,module,exports){
+},{"react":"C:\\Users\\Ryan\\Documents\\College\\3rd Year\\Autumn\\CSE 442\\Final Project\\The-Shortest-Splitline-Algorithm-for-Gerrymandering\\docs\\node_modules\\react\\index.js"}],"C:\\Users\\Ryan\\Documents\\College\\3rd Year\\Autumn\\CSE 442\\Final Project\\The-Shortest-Splitline-Algorithm-for-Gerrymandering\\docs\\components\\default\\inline.js":[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Inline = function (_React$PureComponent) {
+  _inherits(Inline, _React$PureComponent);
+
+  function Inline() {
+    _classCallCheck(this, Inline);
+
+    return _possibleConstructorReturn(this, (Inline.__proto__ || Object.getPrototypeOf(Inline)).apply(this, arguments));
+  }
+
+  _createClass(Inline, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { style: { display: 'inline-block' } },
+        this.props.children
+      );
+    }
+  }]);
+
+  return Inline;
+}(_react2.default.PureComponent);
+
+exports.default = Inline;
+
+},{"react":"C:\\Users\\Ryan\\Documents\\College\\3rd Year\\Autumn\\CSE 442\\Final Project\\The-Shortest-Splitline-Algorithm-for-Gerrymandering\\docs\\node_modules\\react\\index.js"}],"C:\\Users\\Ryan\\Documents\\College\\3rd Year\\Autumn\\CSE 442\\Final Project\\The-Shortest-Splitline-Algorithm-for-Gerrymandering\\docs\\components\\default\\range.js":[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Range = function (_React$PureComponent) {
+  _inherits(Range, _React$PureComponent);
+
+  function Range(props) {
+    _classCallCheck(this, Range);
+
+    return _possibleConstructorReturn(this, (Range.__proto__ || Object.getPrototypeOf(Range)).call(this, props));
+  }
+
+  _createClass(Range, [{
+    key: "handleChange",
+    value: function handleChange(event) {
+      this.props.updateProps({
+        value: +event.target.value
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _props = this.props,
+          value = _props.value,
+          min = _props.min,
+          max = _props.max,
+          step = _props.step;
+
+      return _react2.default.createElement("input", { type: "range", onChange: this.handleChange.bind(this), value: value, min: min, max: max, step: step });
+    }
+  }]);
+
+  return Range;
+}(_react2.default.PureComponent);
+
+Range.defaultProps = {
+  value: 0,
+  min: 0,
+  max: 1,
+  step: 1
+};
+
+exports.default = Range;
+
+},{"react":"C:\\Users\\Ryan\\Documents\\College\\3rd Year\\Autumn\\CSE 442\\Final Project\\The-Shortest-Splitline-Algorithm-for-Gerrymandering\\docs\\node_modules\\react\\index.js"}],"C:\\Users\\Ryan\\Documents\\College\\3rd Year\\Autumn\\CSE 442\\Final Project\\The-Shortest-Splitline-Algorithm-for-Gerrymandering\\docs\\components\\map-d3-component.js":[function(require,module,exports){
+'use strict';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var React = require('react');
+var D3Component = require('idyll-d3-component');
+var d3 = require('d3');
+
+var MapD3Component = function (_D3Component) {
+	_inherits(MapD3Component, _D3Component);
+
+	function MapD3Component() {
+		_classCallCheck(this, MapD3Component);
+
+		return _possibleConstructorReturn(this, (MapD3Component.__proto__ || Object.getPrototypeOf(MapD3Component)).apply(this, arguments));
+	}
+
+	_createClass(MapD3Component, [{
+		key: 'initialize',
+		value: function initialize(node, props) {
+			var svg = this.svg = d3.select(node).append('svg');
+			svg.attr('viewBox', '0 0 ${size} ${size}').style('width', '400').style('height', '400');
+
+			var self = this;
+
+			var points = [];
+			var allPoints = [];
+			var allMyLines = [];
+			var allPolygons = [];
+			var startShape = [[0, 0], [400, 0], [400, 400], [0, 400]];
+
+			for (var i = 0; i < startShape.length; i++) {
+				svg.append("line").attr("x1", startShape[i][0]).attr("y1", startShape[i][1]).attr("x2", startShape[(i + 1) % startShape.length][0]).attr("y2", startShape[(i + 1) % startShape.length][1]).attr("style", "stroke:pink; stroke-width:2");
+			}
+
+			var borderPath = svg.append("rect").attr("x", 0).attr("y", 0).attr("height", 400).attr("width", 400).style("stroke", "pink").style("fill", "none").style("stroke-width", 1);
+		}
+	}, {
+		key: 'update',
+		value: function update() {}
+	}]);
+
+	return MapD3Component;
+}(D3Component);
+
+module.exports = MapD3Component;
+
+},{"d3":"C:\\Users\\Ryan\\Documents\\College\\3rd Year\\Autumn\\CSE 442\\Final Project\\The-Shortest-Splitline-Algorithm-for-Gerrymandering\\docs\\node_modules\\d3\\build\\d3.node.js","idyll-d3-component":"C:\\Users\\Ryan\\Documents\\College\\3rd Year\\Autumn\\CSE 442\\Final Project\\The-Shortest-Splitline-Algorithm-for-Gerrymandering\\docs\\node_modules\\idyll-d3-component\\lib.js","react":"C:\\Users\\Ryan\\Documents\\College\\3rd Year\\Autumn\\CSE 442\\Final Project\\The-Shortest-Splitline-Algorithm-for-Gerrymandering\\docs\\node_modules\\react\\index.js"}],"C:\\Users\\Ryan\\Documents\\College\\3rd Year\\Autumn\\CSE 442\\Final Project\\The-Shortest-Splitline-Algorithm-for-Gerrymandering\\docs\\node_modules\\base64-js\\index.js":[function(require,module,exports){
 'use strict';
 
 exports.byteLength = byteLength;
@@ -36884,19 +37020,21 @@ function extend() {
 },{}],"__IDYLL_AST__":[function(require,module,exports){
 "use strict";
 
-module.exports = [["section", [], [["Header", [["title", ["value", "The Shortest Splitline Algorithm"]], ["subtitle", ["value", "Gerrymandering and Political Districting"]], ["author", ["value", "Devin Garg, Sofie Blankenship, Ryan Fok, Quan The Tran"]], ["authorLink", ["value", "https://idyll-lang.github.io"]]], []], ["p", [], ["The shortest splitline algorithm is a simple mechanical procedure that can be used for drawing lines to form political districts, based solely on population. Currently, political districts in the United States are drawn through gerrymandering, which is a practice intended to establish an advantage for a certain political party or group. By using the shortest splitline algorithm, political districts can be drawn based on the population of certain regions, thus eliminating the bias of gerrymandering. Though in some cases, this may not eliminate political advantages, it nevertheless is an unbiased method of political districting that would elicit less controversy."]], ["h1", [], ["How the Algorithm Works"]], ["p", [], ["The algorithm takes as input the shape of a country/state/region, the locations of its inhabitants, and a positive number ", ["em", [], ["dists"]], " representing desired number of districts. It then divides that country/state/region into ", ["em", [], ["dists"]], " equipopulous districts."]], ["p", [], ["The pseudocode for the formal recursive algorithm is:"]], ["pre", [], [["code", [], ["shortestSplitline (region, dists) {\n  if dists = 1 then output the region as the district;\n  a = floor (dists / 2);\n  b = ceiling (dists / 2);\n  find the shortest splitline with a:b population ratio, breaking ties \n  by the following criteria:\n    if exact-length tie, then use the line closest to North-South\n    orientation, and if still a tie, use Westernmost line.\n  draw the splitline and split region into regionA and regionB;\n  shortestSplitline (regionA, a);\n  shortestSplitline (regionB, b);"]]]], ["h2", [], ["Step ", "1", ": Choose inputs"]], ["p", [], ["We first have to decide how many districts we want to divide the region into, and the population for the district. The locations for each “inhabitant” is chosen at random."]], ["h2", [], ["Step ", "2", ": Split the region into two districts"]], ["p", [], ["We then find the shortest line that splits the region into two equipopulous districts and draw it."]], ["h2", [], ["Step ", "3", ": Recursively split districts into smaller districts"]], ["p", [], ["If more districts are desired, we recurse by repeating step 2, using the subdistrict to find another shortest splitline that will further split it into two equipopulous districts."]], ["h1", [], ["Performance Analysis"]], ["p", [], ["The performance of the algorithm depends on the number of districts and the population of the region being drawn on. If more districts are desired, then the algorithm will have to recurse more, thus slowing the entire algorithm. Similarly, if there are more people living within a region, the algorithm has would have to examine more possible splitlines to find which is the shortest."]], ["h1", [], ["Conclusion"]], ["p", [], ["The shortest splitline algorithm can be used for unbiased political districting, as a replacement for the practice of gerrymandering. Rather than purposely giving one political party of group an advantage, the algorithm disregards party affiliations by splitting regions based on population."]]]], ["fixed", [], [["var", [["name", ["value", "state"]], ["value", ["value", 0]]], []], ["CustomD3Component", [["state", ["variable", "state"]]], []], ["button", [["onClick", ["expression", "state++"]]], ["\n  Click Me."]]]]];
+module.exports = [["section", [], [["Header", [["title", ["value", "The Shortest Splitline Algorithm"]], ["subtitle", ["value", "Gerrymandering and Political Districting"]], ["author", ["value", "Devin Garg, Sofie Blankenship, Ryan Fok, Quan The Tran"]], ["authorLink", ["value", "https://idyll-lang.github.io"]]], []], ["p", [], ["The shortest splitline algorithm is a simple mechanical procedure that can be used for drawing lines to form political districts, based solely on population. Currently, political districts in the United States are drawn through gerrymandering, which is a practice intended to establish an advantage for a certain political party or group. By using the shortest splitline algorithm, political districts can be drawn based on the population of certain regions, thus eliminating the bias of gerrymandering. Though in some cases, this may not eliminate political advantages, it nevertheless is an unbiased method of political districting that would elicit less controversy."]], ["h1", [], ["How the Algorithm Works"]], ["p", [], ["The algorithm takes as input the shape of a country/state/region, the locations of its inhabitants, and a positive number ", ["em", [], ["dists"]], " representing desired number of districts. It then divides that country/state/region into ", ["em", [], ["dists"]], " equipopulous districts."]], ["p", [], ["The pseudocode for the formal recursive algorithm is:"]], ["pre", [], [["code", [], ["shortestSplitline (region, dists) {\n  if dists = 1 then output the region as the district;\n  a = floor (dists / 2);\n  b = ceiling (dists / 2);\n  find the shortest splitline with a:b population ratio, breaking ties \n  by the following criteria:\n    if exact-length tie, then use the line closest to North-South\n    orientation, and if still a tie, use Westernmost line.\n  draw the splitline and split region into regionA and regionB;\n  shortestSplitline (regionA, a);\n  shortestSplitline (regionB, b);"]]]], ["h2", [], ["Step ", "1", ": Choose inputs"]], ["p", [], ["We first have to decide how many districts we want to divide the region into, and the population for the district. The locations for each “inhabitant” is chosen at random."]], ["div", [], [["var", [["name", ["value", "districts"]], ["value", ["value", 7]]], []], ["Range", [["value", ["variable", "districts"]], ["min", ["value", 1]], ["max", ["value", 100]], ["step", ["value", 1]]], []], ["Inline", [], [["Display", [["value", ["variable", "districts"]]], []]]], ["p", [], ["Districts"]], ["var", [["name", ["value", "pop"]], ["value", ["value", 50]]], []], ["Range", [["value", ["variable", "pop"]], ["min", ["value", 1]], ["max", ["value", 100]], ["step", ["value", 1]]], []], ["Inline", [], [["Display", [["value", ["variable", "pop"]]], []]]], ["p", [], ["Population"]], ["var", [["name", ["value", "ratio"]], ["value", ["value", 50]]], []], ["Range", [["value", ["variable", "ratio"]], ["min", ["value", 0]], ["max", ["value", 100]], ["step", ["value", 1]]], []], ["Inline", [], [["Display", [["value", ["variable", "ratio"]]], []]]]]], ["h2", [], ["Step ", "2", ": Split the region into two districts"]], ["p", [], ["We then find the shortest line that splits the region into two equipopulous districts and draw it."]], ["h2", [], ["Step ", "3", ": Recursively split districts into smaller districts"]], ["p", [], ["If more districts are desired, we recurse by repeating step 2, using the subdistrict to find another shortest splitline that will further split it into two equipopulous districts."]], ["h1", [], ["Performance Analysis"]], ["p", [], ["The performance of the algorithm depends on the number of districts and the population of the region being drawn on. If more districts are desired, then the algorithm will have to recurse more, thus slowing the entire algorithm. Similarly, if there are more people living within a region, the algorithm has would have to examine more possible splitlines to find which is the shortest."]], ["h1", [], ["Conclusion"]], ["p", [], ["The shortest splitline algorithm can be used for unbiased political districting, as a replacement for the practice of gerrymandering. Rather than purposely giving one political party of group an advantage, the algorithm disregards party affiliations by splitting regions based on population."]]]], ["fixed", [], [["MapD3Component", [], []]]]];
 
 },{}],"__IDYLL_COMPONENTS__":[function(require,module,exports){
 'use strict';
 
 module.exports = {
 	'header': require('C:/Users/Ryan/Documents/College/3rd Year/Autumn/CSE 442/Final Project/The-Shortest-Splitline-Algorithm-for-Gerrymandering/docs/components/default/header.js'),
+	'range': require('C:/Users/Ryan/Documents/College/3rd Year/Autumn/CSE 442/Final Project/The-Shortest-Splitline-Algorithm-for-Gerrymandering/docs/components/default/range.js'),
+	'inline': require('C:/Users/Ryan/Documents/College/3rd Year/Autumn/CSE 442/Final Project/The-Shortest-Splitline-Algorithm-for-Gerrymandering/docs/components/default/inline.js'),
+	'display': require('C:/Users/Ryan/Documents/College/3rd Year/Autumn/CSE 442/Final Project/The-Shortest-Splitline-Algorithm-for-Gerrymandering/docs/components/default/display.js'),
 	'fixed': require('C:/Users/Ryan/Documents/College/3rd Year/Autumn/CSE 442/Final Project/The-Shortest-Splitline-Algorithm-for-Gerrymandering/docs/components/default/fixed.js'),
-	'custom-d3-component': require('C:/Users/Ryan/Documents/College/3rd Year/Autumn/CSE 442/Final Project/The-Shortest-Splitline-Algorithm-for-Gerrymandering/docs/components/custom-d3-component.js'),
-	'button': require('C:/Users/Ryan/Documents/College/3rd Year/Autumn/CSE 442/Final Project/The-Shortest-Splitline-Algorithm-for-Gerrymandering/docs/components/default/button.js')
+	'map-d3-component': require('C:/Users/Ryan/Documents/College/3rd Year/Autumn/CSE 442/Final Project/The-Shortest-Splitline-Algorithm-for-Gerrymandering/docs/components/map-d3-component.js')
 };
 
-},{"C:/Users/Ryan/Documents/College/3rd Year/Autumn/CSE 442/Final Project/The-Shortest-Splitline-Algorithm-for-Gerrymandering/docs/components/custom-d3-component.js":"C:\\Users\\Ryan\\Documents\\College\\3rd Year\\Autumn\\CSE 442\\Final Project\\The-Shortest-Splitline-Algorithm-for-Gerrymandering\\docs\\components\\custom-d3-component.js","C:/Users/Ryan/Documents/College/3rd Year/Autumn/CSE 442/Final Project/The-Shortest-Splitline-Algorithm-for-Gerrymandering/docs/components/default/button.js":"C:\\Users\\Ryan\\Documents\\College\\3rd Year\\Autumn\\CSE 442\\Final Project\\The-Shortest-Splitline-Algorithm-for-Gerrymandering\\docs\\components\\default\\button.js","C:/Users/Ryan/Documents/College/3rd Year/Autumn/CSE 442/Final Project/The-Shortest-Splitline-Algorithm-for-Gerrymandering/docs/components/default/fixed.js":"C:\\Users\\Ryan\\Documents\\College\\3rd Year\\Autumn\\CSE 442\\Final Project\\The-Shortest-Splitline-Algorithm-for-Gerrymandering\\docs\\components\\default\\fixed.js","C:/Users/Ryan/Documents/College/3rd Year/Autumn/CSE 442/Final Project/The-Shortest-Splitline-Algorithm-for-Gerrymandering/docs/components/default/header.js":"C:\\Users\\Ryan\\Documents\\College\\3rd Year\\Autumn\\CSE 442\\Final Project\\The-Shortest-Splitline-Algorithm-for-Gerrymandering\\docs\\components\\default\\header.js"}],"__IDYLL_DATA__":[function(require,module,exports){
+},{"C:/Users/Ryan/Documents/College/3rd Year/Autumn/CSE 442/Final Project/The-Shortest-Splitline-Algorithm-for-Gerrymandering/docs/components/default/display.js":"C:\\Users\\Ryan\\Documents\\College\\3rd Year\\Autumn\\CSE 442\\Final Project\\The-Shortest-Splitline-Algorithm-for-Gerrymandering\\docs\\components\\default\\display.js","C:/Users/Ryan/Documents/College/3rd Year/Autumn/CSE 442/Final Project/The-Shortest-Splitline-Algorithm-for-Gerrymandering/docs/components/default/fixed.js":"C:\\Users\\Ryan\\Documents\\College\\3rd Year\\Autumn\\CSE 442\\Final Project\\The-Shortest-Splitline-Algorithm-for-Gerrymandering\\docs\\components\\default\\fixed.js","C:/Users/Ryan/Documents/College/3rd Year/Autumn/CSE 442/Final Project/The-Shortest-Splitline-Algorithm-for-Gerrymandering/docs/components/default/header.js":"C:\\Users\\Ryan\\Documents\\College\\3rd Year\\Autumn\\CSE 442\\Final Project\\The-Shortest-Splitline-Algorithm-for-Gerrymandering\\docs\\components\\default\\header.js","C:/Users/Ryan/Documents/College/3rd Year/Autumn/CSE 442/Final Project/The-Shortest-Splitline-Algorithm-for-Gerrymandering/docs/components/default/inline.js":"C:\\Users\\Ryan\\Documents\\College\\3rd Year\\Autumn\\CSE 442\\Final Project\\The-Shortest-Splitline-Algorithm-for-Gerrymandering\\docs\\components\\default\\inline.js","C:/Users/Ryan/Documents/College/3rd Year/Autumn/CSE 442/Final Project/The-Shortest-Splitline-Algorithm-for-Gerrymandering/docs/components/default/range.js":"C:\\Users\\Ryan\\Documents\\College\\3rd Year\\Autumn\\CSE 442\\Final Project\\The-Shortest-Splitline-Algorithm-for-Gerrymandering\\docs\\components\\default\\range.js","C:/Users/Ryan/Documents/College/3rd Year/Autumn/CSE 442/Final Project/The-Shortest-Splitline-Algorithm-for-Gerrymandering/docs/components/map-d3-component.js":"C:\\Users\\Ryan\\Documents\\College\\3rd Year\\Autumn\\CSE 442\\Final Project\\The-Shortest-Splitline-Algorithm-for-Gerrymandering\\docs\\components\\map-d3-component.js"}],"__IDYLL_DATA__":[function(require,module,exports){
 "use strict";
 
 module.exports = {};

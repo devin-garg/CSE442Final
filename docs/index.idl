@@ -35,6 +35,24 @@ shortestSplitline (region, dists) {
 ## Step 1: Choose inputs
 We first have to decide how many districts we want to divide the region into, and the population for the district. The locations for each "inhabitant" is chosen at random.
 
+[div]
+[var name:"districts" value:7 /]
+[Range value:districts min:1 max:100 step:1 /]
+[Inline][Display value:districts /][/Inline]
+
+Districts
+
+[var name:"pop" value:50 /]
+[Range value:pop min:1 max:100 step:1 /]
+[Inline][Display value:pop /][/Inline]
+
+Population
+
+[var name:"ratio" value:50 /]
+[Range value:ratio min:0 max:100 step:1 /]
+[Inline][Display value:ratio /][/Inline]
+[/div]
+
 ## Step 2: Split the region into two districts
 We then find the shortest line that splits the region into two equipopulous districts and draw it.
 
@@ -50,12 +68,7 @@ The shortest splitline algorithm can be used for unbiased political districting,
 [/section]
 
 [fixed]
-
-[var name:"state" value:0 /]
-
-[CustomD3Component state:state /]
-[button onClick:`state++`]
-  Click Me.
-[/button]
+ 
+[MapD3Component  /]
 
 [/fixed]
