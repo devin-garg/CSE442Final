@@ -67,6 +67,12 @@ svg{
                 document.addEventListener('DOMContentLoaded', function () {
                     // var isRunning = true; 
                     setUpPoints(100, 49);
+                    // QT: this function need to put inside the shape that we got. 
+                    // So right now the algorithm recursively splits any populated shape into a number of districts. If you run the page it should show, I believe 100 people into 7 districts in that rectangle. I do this by finding all the splitlines, choosing the shortest, and making 2 new "states" from that division. In case anyone needs a place to get started:
+                    // the map should maybe color the districts by "winner" when the algorithm is done, 
+                    //there could  be a way to change number of people, number of districts, and party ratio before the algorithm is run. You can also make the points drag and drop. 
+                    // If you wanna do real states, I would recommend making static images, since the algorithm will take a while to calculate for that many people in that complex of a shape.
+
                    splitShape(startShape, points, 7);
                    document.getElementById("runTheLines").addEventListener("click", runNewLines)
                    // isRunning = false
@@ -164,6 +170,14 @@ svg{
                     var svg = d3.select("svg");
                     
                     var borderPath = svg.append("rect")
+
+                          .transition()
+                        // .delay(function(d, i)) {
+                        // 	return i * 100;
+                        // }
+                        .delay(1000)
+                        .duration(2000)
+                        .ease(d3.easeLinear)
                     .attr("x", 0)
                     .attr("y", 0)
                     .attr("height", 400)
@@ -171,6 +185,7 @@ svg{
                     .style("stroke", "pink")
                     .style("fill", "none")
                     .style("stroke-width", 1);
+
                     function deleteAllPoints(){
 // show progress
                            for (var i = allPoints[0]._groups[0].length - 1; i >= 0; i--) {
@@ -178,13 +193,45 @@ svg{
                             }
                              allPoints = []
                     }
+                    //QT: 
+                    function xyz(starting_point, ending_point, pop, minx_or_maxx, goal, splitlines) {
+                    	for(var j = starting_point; j<ending_point; j++){
+                                var above = 0;
+                                for(var k = 0; k<pop.length; k++){
+                                    if(minx_or_maxx != i && pop[k].y > ((j-starting_point)/(minx_or_maxx-i))*(pop[k].x-i)+starting_point){
+                                        above++;
+                                    }
+                                }
+                                if(above == goal || above == pop.length-goal){
+                                    splitlines[splitlines.length] = {x1: i, y1: starting_point, x2: minx_or_maxx, y2: j};
+                                }
+                            }
+
+
+                    }
+
+                    function abc(starting_point, ending_point, maxy, pop, minx_or_maxx, goal, splitlines) {
+	                	for(var j = starting_point; j<ending_point; j++){
+	                            var above = 0;
+	                            for(var k = 0; k<pop.length; k++){
+	                                if(minx_or_maxx != j && pop[k].y > ((maxy-i)/(j-minx_or_maxx))*(pop[k].x-minx_or_maxx)+i){
+	                                    above++;
+	                                }
+	                            }
+	                            if(above == goal || above == pop.length-goal){
+	                                splitlines[splitlines.length] = {x1: minx_or_maxx, y1: i, x2: j, y2: maxy};
+	                            }
+	                        }
+	    
+                        
+                    }
+
                     function setUpPoints(pop, blueCount){
                          points = [];
                          allPoints = []
                         for(i=0; i<pop; i++){
                             if(i > blueCount){
                                 points[i] = {x: Math.floor(Math.random() * 601), y: Math.floor(Math.random() * 401), party: 1};
-
                             } else{
                                 points[i] = {x: Math.floor(Math.random() * 601), y: Math.floor(Math.random() * 401), party: 0};
 
@@ -193,6 +240,11 @@ svg{
                         
                         allPoints.push(svg.selectAll(".pin").data(points)
                         .enter().append("circle", ".pin")
+                        .transition()
+                        .delay(1000)
+                        .duration(2000)
+                        .ease(d3.easeLinear)
+
                         .attr("r", 3)
                         .attr("transform", function(d) {
                             return "translate(" + 
@@ -201,6 +253,10 @@ svg{
                                 d.y
                              + ")"
                         })
+                          .transition()
+                        .delay(1000)
+                        .duration(2000)
+                        .ease(d3.easeLinear)
                         .attr("fill", function(d) {
                             if(d["party"] == 0){
                                 return "blue"
@@ -211,10 +267,19 @@ svg{
                         }))
                     }
                     
-                    var startShape = [[0, 0], [600, 0], [600, 400], [0, 400]]
+                    var startShape = [[0, 0], [600, 0], [600, 400], [0, 400]] 
+                    // startShape is just the first shape that we start is red and blue colors           
+                    // QT:it is a points of rectangel, 
+                    // put the random assignments inside that array
+                    // make the poin randomly within the polygon 
+
                     
                     for(i = 0; i<startShape.length; i++){
                         svg.append("line")
+                         .transition()
+                        .delay(500)
+                        .duration(500)
+                        .ease(d3.easeLinear)
                         .attr("x1", startShape[i][0])
                         .attr("y1", startShape[i][1])
                         .attr("x2", startShape[(i+1)%startShape.length][0])
@@ -281,17 +346,19 @@ svg{
                         // console.log(goal);
                         var splitlines = [];
                         for(var i = minx; i<maxx; i++){
-                            for(var j = miny; j<maxy; j++){
-                                var above = 0;
-                                for(var k = 0; k<pop.length; k++){
-                                    if(maxx != i && pop[k].y > ((j-miny)/(maxx-i))*(pop[k].x-i)+miny){
-                                        above++;
-                                    }
-                                }
-                                if(above == goal || above == pop.length-goal){
-                                    splitlines[splitlines.length] = {x1: i, y1: miny, x2: maxx, y2: j};
-                                }
-                            }
+                            // for(var j = miny; j<maxy; j++){
+                            //     var above = 0;
+                            //     for(var k = 0; k<pop.length; k++){
+                            //         if(maxx != i && pop[k].y > ((j-miny)/(maxx-i))*(pop[k].x-i)+miny){
+                            //             above++;
+                            //         }
+                            //     }
+                            //     if(above == goal || above == pop.length-goal){
+                            //         splitlines[splitlines.length] = {x1: i, y1: miny, x2: maxx, y2: j};
+                            //     }
+                            // }
+                             xyz(miny, maxy, pop, maxx, goal, splitlines);
+
                             for(var j = minx; j<maxx; j++){
                                 var above = 0;
                                 for(var k = 0; k<pop.length; k++){
@@ -303,20 +370,24 @@ svg{
                                     splitlines[splitlines.length] = {x1: i, y1: miny, x2: j, y2: maxy};
                                 }
                             }
-                            for(var j = miny; j<maxy; j++){
-                                var above = 0;
-                                for(var k = 0; k<pop.length; k++){
-                                    if(minx != i && pop[k].y > ((j-miny)/(minx-i))*(pop[k].x-i)+miny){
-                                        above++;
-                                    }
-                                }
-                                if(above == goal || above == pop.length-goal){
-                                    splitlines[splitlines.length] = {x1: i, y1: miny, x2: minx, y2: j};
-                                }
-                            }
+                            // for(var j = miny; j<maxy; j++){
+                            //     var above = 0;
+                            //     for(var k = 0; k<pop.length; k++){
+                            //         if(minx != i && pop[k].y > ((j-miny)/(minx-i))*(pop[k].x-i)+miny){
+                            //             above++;
+                            //         }
+                            //     }
+                            //     if(above == goal || above == pop.length-goal){
+                            //         splitlines[splitlines.length] = {x1: i, y1: miny, x2: minx, y2: j};
+                            //     }
+                            // }
+                                xyz(miny, maxy, pop, minx, goal, splitlines);
+
                         }
                         
                         for(var i = miny; i<maxy; i++){
+
+
                             for(var j = miny; j<maxy; j++){
                                 var above = 0;
                                 for(var k = 0; k<pop.length; k++){
@@ -325,34 +396,40 @@ svg{
                                     }
                                 }
                                 if(above == goal || above == pop.length-goal){
+                                    // splitlines[splitlines.length] = {x1: minx, y1: i, x2: maxx, y2: j};
                                     splitlines[splitlines.length] = {x1: minx, y1: i, x2: maxx, y2: j};
+
                                 }
                             }
-                            for(var j = minx; j<maxx; j++){
-                                var above = 0;
-                                for(var k = 0; k<pop.length; k++){
-                                    if(j != minx && pop[k].y > ((maxy-i)/(j-minx))*(pop[k].x-minx)+i){
-                                        above++;
-                                    }
-                                }
-                                if(above == goal || above == pop.length-goal){
-                                    splitlines[splitlines.length] = {x1: minx, y1: i, x2: j, y2: maxy};
-                                }
-                            }
-                        }
+
+                            // for(var j = minx; j<maxx; j++){
+                            //     var above = 0;
+                            //     for(var k = 0; k<pop.length; k++){
+                            //         if(j != minx && pop[k].y > ((maxy-i)/(j-minx))*(pop[k].x-minx)+i){
+                            //             above++;
+                            //         }
+                            //     }
+                            //     if(above == goal || above == pop.length-goal){
+                            //         splitlines[splitlines.length] = {x1: minx, y1: i, x2: j, y2: maxy};
+                            //     }
+                            // }
+                             abc(minx, maxx, maxy, pop, minx, goal, splitlines) ;
+                             abc(minx, maxx, maxy, pop, maxx, goal, splitlines) ;
+
+                        // }
                         
-                        for(var i = miny; i<maxy; i++){
-                            for(var j = minx; j<maxx; j++){
-                                var above = 0;
-                                for(var k = 0; k<pop.length; k++){
-                                    if(j != maxx && pop[k].y > ((maxy-i)/(j-maxx))*(pop[k].x-maxx)+i){
-                                        above++;
-                                    }
-                                }
-                                if(above == goal || above == pop.length-goal){
-                                    splitlines[splitlines.length] = {x1: maxx, y1: i, x2: j, y2: maxy};
-                                }
-                            }
+                        // for(var i = miny; i<maxy; i++){
+                            // for(var j = minx; j<maxx; j++){
+                            //     var above = 0;
+                            //     for(var k = 0; k<pop.length; k++){
+                            //         if(j != maxx && pop[k].y > ((maxy-i)/(j-maxx))*(pop[k].x-maxx)+i){
+                            //             above++;
+                            //         }
+                            //     }
+                            //     if(above == goal || above == pop.length-goal){
+                            //         splitlines[splitlines.length] = {x1: maxx, y1: i, x2: j, y2: maxy};
+                            //     }
+                            // }
                         }
                         var minLine = [{x1: 0, y1: 0, x2: 0, y2: 0}];
                         var minLen = 10000000000;
@@ -386,7 +463,8 @@ svg{
                         var stateB = [];
                         for(i = 0; i<corners.length; i++){
                             var inter = calculateIntersectionPoint(oldLine.x1, oldLine.y1, oldLine.x2, oldLine.y2,
-                                                        corners[i][0], corners[i][1], corners[(i+1)%corners.length][0], corners[(i+1)%corners.length][1]);
+                                                        corners[i][0], corners[i][1], corners[(i+1)%corners.length][0], 
+                                                        corners[(i+1)%corners.length][1]);
                             
                             if(flag){
                                 stateA[stateA.length] = corners[i];
@@ -446,19 +524,36 @@ svg{
                     }
                     function performBorderOperation(minLine, colorActual) {
                           allMyLines.push(svg.selectAll(".split").data(minLine)
-                        .enter().append("line", ".split")
+
+                        .enter()
+
+                        .append("line", ".split")
+                         .transition()
+                        // .delay(function(d, i)) {
+                        // 	return i * 100;
+                        // }
+                        .delay(2000)
+                        .duration(2000)
+                        .ease(d3.easeLinear)
+                        // .transition()
+                        // .duration(1000)
                         .attr("x1", function(d) {
                             return Math.floor(d.x1)
                         })
+                     
+
                         .attr("x2", function(d) {
                             return Math.floor(d.x2)
                         })
+                     
                         .attr("y1", function(d) {
                             return Math.floor(d.y1)
                         })
+                    
                         .attr("y2", function(d) {
                             return Math.floor(d.y2)
                         })
+                        
                         .attr("style", "stroke:"+colorActual+"; stroke-width:2"))
                     }
 
