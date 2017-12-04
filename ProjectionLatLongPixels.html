@@ -1,0 +1,784 @@
+<!DOCTYPE HTML>
+<html xml:lang="en" lang="en">
+<head>
+    <title>CSE442 | Final The Shortest Splitline Algorithm</title>
+  
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+    /*! =======================================================
+                      VERSION  10.0.0              
+========================================================= */
+"use strict";var _typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(a){return typeof a}:function(a){return a&&"function"==typeof Symbol&&a.constructor===Symbol&&a!==Symbol.prototype?"symbol":typeof a},windowIsDefined="object"===("undefined"==typeof window?"undefined":_typeof(window));!function(a){if("function"==typeof define&&define.amd)define(["jquery"],a);else if("object"===("undefined"==typeof module?"undefined":_typeof(module))&&module.exports){var b;try{b=require("jquery")}catch(c){b=null}module.exports=a(b)}else window&&(window.Slider=a(window.jQuery))}(function(a){var b="slider",c="bootstrapSlider";windowIsDefined&&!window.console&&(window.console={}),windowIsDefined&&!window.console.log&&(window.console.log=function(){}),windowIsDefined&&!window.console.warn&&(window.console.warn=function(){});var d;return function(a){function b(){}function c(a){function c(b){b.prototype.option||(b.prototype.option=function(b){a.isPlainObject(b)&&(this.options=a.extend(!0,this.options,b))})}function e(b,c){a.fn[b]=function(e){if("string"==typeof e){for(var g=d.call(arguments,1),h=0,i=this.length;i>h;h++){var j=this[h],k=a.data(j,b);if(k)if(a.isFunction(k[e])&&"_"!==e.charAt(0)){var l=k[e].apply(k,g);if(void 0!==l&&l!==k)return l}else f("no such method '"+e+"' for "+b+" instance");else f("cannot call methods on "+b+" prior to initialization; attempted to call '"+e+"'")}return this}var m=this.map(function(){var d=a.data(this,b);return d?(d.option(e),d._init()):(d=new c(this,e),a.data(this,b,d)),a(this)});return!m||m.length>1?m:m[0]}}if(a){var f="undefined"==typeof console?b:function(a){console.error(a)};return a.bridget=function(a,b){c(b),e(a,b)},a.bridget}}var d=Array.prototype.slice;c(a)}(a),function(a){function e(b,c){function d(a,b){var c="data-slider-"+b.replace(/_/g,"-"),d=a.getAttribute(c);try{return JSON.parse(d)}catch(e){return d}}this._state={value:null,enabled:null,offset:null,size:null,percentage:null,inDrag:!1,over:!1},this.ticksCallbackMap={},this.handleCallbackMap={},"string"==typeof b?this.element=document.querySelector(b):b instanceof HTMLElement&&(this.element=b),c=c?c:{};for(var e=Object.keys(this.defaultOptions),f=0;f<e.length;f++){var h=e[f],i=c[h];i="undefined"!=typeof i?i:d(this.element,h),i=null!==i?i:this.defaultOptions[h],this.options||(this.options={}),this.options[h]=i}"auto"===this.options.rtl&&(this.options.rtl="rtl"===window.getComputedStyle(this.element).direction),"vertical"!==this.options.orientation||"top"!==this.options.tooltip_position&&"bottom"!==this.options.tooltip_position?"horizontal"!==this.options.orientation||"left"!==this.options.tooltip_position&&"right"!==this.options.tooltip_position||(this.options.tooltip_position="top"):this.options.rtl?this.options.tooltip_position="left":this.options.tooltip_position="right";var j,k,l,m,n,o=this.element.style.width,p=!1,q=this.element.parentNode;if(this.sliderElem)p=!0;else{this.sliderElem=document.createElement("div"),this.sliderElem.className="slider";var r=document.createElement("div");r.className="slider-track",k=document.createElement("div"),k.className="slider-track-low",j=document.createElement("div"),j.className="slider-selection",l=document.createElement("div"),l.className="slider-track-high",m=document.createElement("div"),m.className="slider-handle min-slider-handle",m.setAttribute("role","slider"),m.setAttribute("aria-valuemin",this.options.min),m.setAttribute("aria-valuemax",this.options.max),n=document.createElement("div"),n.className="slider-handle max-slider-handle",n.setAttribute("role","slider"),n.setAttribute("aria-valuemin",this.options.min),n.setAttribute("aria-valuemax",this.options.max),r.appendChild(k),r.appendChild(j),r.appendChild(l),this.rangeHighlightElements=[];var s=this.options.rangeHighlights;if(Array.isArray(s)&&s.length>0)for(var t=0;t<s.length;t++){var u=document.createElement("div"),v=s[t]["class"]||"";u.className="slider-rangeHighlight slider-selection "+v,this.rangeHighlightElements.push(u),r.appendChild(u)}var w=Array.isArray(this.options.labelledby);if(w&&this.options.labelledby[0]&&m.setAttribute("aria-labelledby",this.options.labelledby[0]),w&&this.options.labelledby[1]&&n.setAttribute("aria-labelledby",this.options.labelledby[1]),!w&&this.options.labelledby&&(m.setAttribute("aria-labelledby",this.options.labelledby),n.setAttribute("aria-labelledby",this.options.labelledby)),this.ticks=[],Array.isArray(this.options.ticks)&&this.options.ticks.length>0){for(this.ticksContainer=document.createElement("div"),this.ticksContainer.className="slider-tick-container",f=0;f<this.options.ticks.length;f++){var x=document.createElement("div");if(x.className="slider-tick",this.options.ticks_tooltip){var y=this._addTickListener(),z=y.addMouseEnter(this,x,f),A=y.addMouseLeave(this,x);this.ticksCallbackMap[f]={mouseEnter:z,mouseLeave:A}}this.ticks.push(x),this.ticksContainer.appendChild(x)}j.className+=" tick-slider-selection"}if(this.tickLabels=[],Array.isArray(this.options.ticks_labels)&&this.options.ticks_labels.length>0)for(this.tickLabelContainer=document.createElement("div"),this.tickLabelContainer.className="slider-tick-label-container",f=0;f<this.options.ticks_labels.length;f++){var B=document.createElement("div"),C=0===this.options.ticks_positions.length,D=this.options.reversed&&C?this.options.ticks_labels.length-(f+1):f;B.className="slider-tick-label",B.innerHTML=this.options.ticks_labels[D],this.tickLabels.push(B),this.tickLabelContainer.appendChild(B)}var E=function(a){var b=document.createElement("div");b.className="tooltip-arrow";var c=document.createElement("div");c.className="tooltip-inner",a.appendChild(b),a.appendChild(c)},F=document.createElement("div");F.className="tooltip tooltip-main",F.setAttribute("role","presentation"),E(F);var G=document.createElement("div");G.className="tooltip tooltip-min",G.setAttribute("role","presentation"),E(G);var H=document.createElement("div");H.className="tooltip tooltip-max",H.setAttribute("role","presentation"),E(H),this.sliderElem.appendChild(r),this.sliderElem.appendChild(F),this.sliderElem.appendChild(G),this.sliderElem.appendChild(H),this.tickLabelContainer&&this.sliderElem.appendChild(this.tickLabelContainer),this.ticksContainer&&this.sliderElem.appendChild(this.ticksContainer),this.sliderElem.appendChild(m),this.sliderElem.appendChild(n),q.insertBefore(this.sliderElem,this.element),this.element.style.display="none"}if(a&&(this.$element=a(this.element),this.$sliderElem=a(this.sliderElem)),this.eventToCallbackMap={},this.sliderElem.id=this.options.id,this.touchCapable="ontouchstart"in window||window.DocumentTouch&&document instanceof window.DocumentTouch,this.touchX=0,this.touchY=0,this.tooltip=this.sliderElem.querySelector(".tooltip-main"),this.tooltipInner=this.tooltip.querySelector(".tooltip-inner"),this.tooltip_min=this.sliderElem.querySelector(".tooltip-min"),this.tooltipInner_min=this.tooltip_min.querySelector(".tooltip-inner"),this.tooltip_max=this.sliderElem.querySelector(".tooltip-max"),this.tooltipInner_max=this.tooltip_max.querySelector(".tooltip-inner"),g[this.options.scale]&&(this.options.scale=g[this.options.scale]),p===!0&&(this._removeClass(this.sliderElem,"slider-horizontal"),this._removeClass(this.sliderElem,"slider-vertical"),this._removeClass(this.sliderElem,"slider-rtl"),this._removeClass(this.tooltip,"hide"),this._removeClass(this.tooltip_min,"hide"),this._removeClass(this.tooltip_max,"hide"),["left","right","top","width","height"].forEach(function(a){this._removeProperty(this.trackLow,a),this._removeProperty(this.trackSelection,a),this._removeProperty(this.trackHigh,a)},this),[this.handle1,this.handle2].forEach(function(a){this._removeProperty(a,"left"),this._removeProperty(a,"right"),this._removeProperty(a,"top")},this),[this.tooltip,this.tooltip_min,this.tooltip_max].forEach(function(a){this._removeProperty(a,"left"),this._removeProperty(a,"right"),this._removeProperty(a,"top"),this._removeClass(a,"right"),this._removeClass(a,"left"),this._removeClass(a,"top")},this)),"vertical"===this.options.orientation?(this._addClass(this.sliderElem,"slider-vertical"),this.stylePos="top",this.mousePos="pageY",this.sizePos="offsetHeight"):(this._addClass(this.sliderElem,"slider-horizontal"),this.sliderElem.style.width=o,this.options.orientation="horizontal",this.options.rtl?this.stylePos="right":this.stylePos="left",this.mousePos="pageX",this.sizePos="offsetWidth"),this.options.rtl&&this._addClass(this.sliderElem,"slider-rtl"),this._setTooltipPosition(),Array.isArray(this.options.ticks)&&this.options.ticks.length>0&&(this.options.max=Math.max.apply(Math,this.options.ticks),this.options.min=Math.min.apply(Math,this.options.ticks)),Array.isArray(this.options.value)?(this.options.range=!0,this._state.value=this.options.value):this.options.range?this._state.value=[this.options.value,this.options.max]:this._state.value=this.options.value,this.trackLow=k||this.trackLow,this.trackSelection=j||this.trackSelection,this.trackHigh=l||this.trackHigh,"none"===this.options.selection?(this._addClass(this.trackLow,"hide"),this._addClass(this.trackSelection,"hide"),this._addClass(this.trackHigh,"hide")):("after"===this.options.selection||"before"===this.options.selection)&&(this._removeClass(this.trackLow,"hide"),this._removeClass(this.trackSelection,"hide"),this._removeClass(this.trackHigh,"hide")),this.handle1=m||this.handle1,this.handle2=n||this.handle2,p===!0)for(this._removeClass(this.handle1,"round triangle"),this._removeClass(this.handle2,"round triangle hide"),f=0;f<this.ticks.length;f++)this._removeClass(this.ticks[f],"round triangle hide");var I=["round","triangle","custom"],J=-1!==I.indexOf(this.options.handle);if(J)for(this._addClass(this.handle1,this.options.handle),this._addClass(this.handle2,this.options.handle),f=0;f<this.ticks.length;f++)this._addClass(this.ticks[f],this.options.handle);if(this._state.offset=this._offset(this.sliderElem),this._state.size=this.sliderElem[this.sizePos],this.setValue(this._state.value),this.handle1Keydown=this._keydown.bind(this,0),this.handle1.addEventListener("keydown",this.handle1Keydown,!1),this.handle2Keydown=this._keydown.bind(this,1),this.handle2.addEventListener("keydown",this.handle2Keydown,!1),this.mousedown=this._mousedown.bind(this),this.touchstart=this._touchstart.bind(this),this.touchmove=this._touchmove.bind(this),this.touchCapable){var K=!1;try{var L=Object.defineProperty({},"passive",{get:function(){K=!0}});window.addEventListener("test",null,L)}catch(M){}var N=K?{passive:!0}:!1;this.sliderElem.addEventListener("touchstart",this.touchstart,N),this.sliderElem.addEventListener("touchmove",this.touchmove,N)}if(this.sliderElem.addEventListener("mousedown",this.mousedown,!1),this.resize=this._resize.bind(this),window.addEventListener("resize",this.resize,!1),"hide"===this.options.tooltip)this._addClass(this.tooltip,"hide"),this._addClass(this.tooltip_min,"hide"),this._addClass(this.tooltip_max,"hide");else if("always"===this.options.tooltip)this._showTooltip(),this._alwaysShowTooltip=!0;else{if(this.showTooltip=this._showTooltip.bind(this),this.hideTooltip=this._hideTooltip.bind(this),this.options.ticks_tooltip){var O=this._addTickListener(),P=O.addMouseEnter(this,this.handle1),Q=O.addMouseLeave(this,this.handle1);this.handleCallbackMap.handle1={mouseEnter:P,mouseLeave:Q},P=O.addMouseEnter(this,this.handle2),Q=O.addMouseLeave(this,this.handle2),this.handleCallbackMap.handle2={mouseEnter:P,mouseLeave:Q}}else this.sliderElem.addEventListener("mouseenter",this.showTooltip,!1),this.sliderElem.addEventListener("mouseleave",this.hideTooltip,!1);this.handle1.addEventListener("focus",this.showTooltip,!1),this.handle1.addEventListener("blur",this.hideTooltip,!1),this.handle2.addEventListener("focus",this.showTooltip,!1),this.handle2.addEventListener("blur",this.hideTooltip,!1)}this.options.enabled?this.enable():this.disable()}var f={formatInvalidInputErrorMsg:function(a){return"Invalid input value '"+a+"' passed in"},callingContextNotSliderInstance:"Calling context element does not have instance of Slider bound to it. Check your code to make sure the JQuery object returned from the call to the slider() initializer is calling the method"},g={linear:{toValue:function(a){var b=a/100*(this.options.max-this.options.min),c=!0;if(this.options.ticks_positions.length>0){for(var d,e,f,g=0,h=1;h<this.options.ticks_positions.length;h++)if(a<=this.options.ticks_positions[h]){d=this.options.ticks[h-1],f=this.options.ticks_positions[h-1],e=this.options.ticks[h],g=this.options.ticks_positions[h];break}var i=(a-f)/(g-f);b=d+i*(e-d),c=!1}var j=c?this.options.min:0,k=j+Math.round(b/this.options.step)*this.options.step;return k<this.options.min?this.options.min:k>this.options.max?this.options.max:k},toPercentage:function(a){if(this.options.max===this.options.min)return 0;if(this.options.ticks_positions.length>0){for(var b,c,d,e=0,f=0;f<this.options.ticks.length;f++)if(a<=this.options.ticks[f]){b=f>0?this.options.ticks[f-1]:0,d=f>0?this.options.ticks_positions[f-1]:0,c=this.options.ticks[f],e=this.options.ticks_positions[f];break}if(f>0){var g=(a-b)/(c-b);return d+g*(e-d)}}return 100*(a-this.options.min)/(this.options.max-this.options.min)}},logarithmic:{toValue:function(a){var b=0===this.options.min?0:Math.log(this.options.min),c=Math.log(this.options.max),d=Math.exp(b+(c-b)*a/100);return Math.round(d)===this.options.max?this.options.max:(d=this.options.min+Math.round((d-this.options.min)/this.options.step)*this.options.step,d<this.options.min?this.options.min:d>this.options.max?this.options.max:d)},toPercentage:function(a){if(this.options.max===this.options.min)return 0;var b=Math.log(this.options.max),c=0===this.options.min?0:Math.log(this.options.min),d=0===a?0:Math.log(a);return 100*(d-c)/(b-c)}}};if(d=function(a,b){return e.call(this,a,b),this},d.prototype={_init:function(){},constructor:d,defaultOptions:{id:"",min:0,max:10,step:1,precision:0,orientation:"horizontal",value:5,range:!1,selection:"before",tooltip:"show",tooltip_split:!1,handle:"round",reversed:!1,rtl:"auto",enabled:!0,formatter:function(a){return Array.isArray(a)?a[0]+" : "+a[1]:a},natural_arrow_keys:!1,ticks:[],ticks_positions:[],ticks_labels:[],ticks_snap_bounds:0,ticks_tooltip:!1,scale:"linear",focus:!1,tooltip_position:null,labelledby:null,rangeHighlights:[]},getElement:function(){return this.sliderElem},getValue:function(){return this.options.range?this._state.value:this._state.value[0]},setValue:function(a,b,c){a||(a=0);var d=this.getValue();this._state.value=this._validateInputValue(a);var e=this._applyPrecision.bind(this);this.options.range?(this._state.value[0]=e(this._state.value[0]),this._state.value[1]=e(this._state.value[1]),this._state.value[0]=Math.max(this.options.min,Math.min(this.options.max,this._state.value[0])),this._state.value[1]=Math.max(this.options.min,Math.min(this.options.max,this._state.value[1]))):(this._state.value=e(this._state.value),this._state.value=[Math.max(this.options.min,Math.min(this.options.max,this._state.value))],this._addClass(this.handle2,"hide"),"after"===this.options.selection?this._state.value[1]=this.options.max:this._state.value[1]=this.options.min),this.options.max>this.options.min?this._state.percentage=[this._toPercentage(this._state.value[0]),this._toPercentage(this._state.value[1]),100*this.options.step/(this.options.max-this.options.min)]:this._state.percentage=[0,0,100],this._layout();var f=this.options.range?this._state.value:this._state.value[0];return this._setDataVal(f),b===!0&&this._trigger("slide",f),d!==f&&c===!0&&this._trigger("change",{oldValue:d,newValue:f}),this},destroy:function(){this._removeSliderEventHandlers(),this.sliderElem.parentNode.removeChild(this.sliderElem),this.element.style.display="",this._cleanUpEventCallbacksMap(),this.element.removeAttribute("data"),a&&(this._unbindJQueryEventHandlers(),this.$element.removeData("slider"))},disable:function(){return this._state.enabled=!1,this.handle1.removeAttribute("tabindex"),this.handle2.removeAttribute("tabindex"),this._addClass(this.sliderElem,"slider-disabled"),this._trigger("slideDisabled"),this},enable:function(){return this._state.enabled=!0,this.handle1.setAttribute("tabindex",0),this.handle2.setAttribute("tabindex",0),this._removeClass(this.sliderElem,"slider-disabled"),this._trigger("slideEnabled"),this},toggle:function(){return this._state.enabled?this.disable():this.enable(),this},isEnabled:function(){return this._state.enabled},on:function(a,b){return this._bindNonQueryEventHandler(a,b),this},off:function(b,c){a?(this.$element.off(b,c),this.$sliderElem.off(b,c)):this._unbindNonQueryEventHandler(b,c)},getAttribute:function(a){return a?this.options[a]:this.options},setAttribute:function(a,b){return this.options[a]=b,this},refresh:function(){return this._removeSliderEventHandlers(),e.call(this,this.element,this.options),a&&a.data(this.element,"slider",this),this},relayout:function(){return this._resize(),this._layout(),this},_removeSliderEventHandlers:function(){if(this.handle1.removeEventListener("keydown",this.handle1Keydown,!1),this.handle2.removeEventListener("keydown",this.handle2Keydown,!1),this.options.ticks_tooltip){for(var a=this.ticksContainer.getElementsByClassName("slider-tick"),b=0;b<a.length;b++)a[b].removeEventListener("mouseenter",this.ticksCallbackMap[b].mouseEnter,!1),a[b].removeEventListener("mouseleave",this.ticksCallbackMap[b].mouseLeave,!1);this.handle1.removeEventListener("mouseenter",this.handleCallbackMap.handle1.mouseEnter,!1),this.handle2.removeEventListener("mouseenter",this.handleCallbackMap.handle2.mouseEnter,!1),this.handle1.removeEventListener("mouseleave",this.handleCallbackMap.handle1.mouseLeave,!1),this.handle2.removeEventListener("mouseleave",this.handleCallbackMap.handle2.mouseLeave,!1)}this.handleCallbackMap=null,this.ticksCallbackMap=null,this.showTooltip&&(this.handle1.removeEventListener("focus",this.showTooltip,!1),this.handle2.removeEventListener("focus",this.showTooltip,!1)),this.hideTooltip&&(this.handle1.removeEventListener("blur",this.hideTooltip,!1),this.handle2.removeEventListener("blur",this.hideTooltip,!1)),this.showTooltip&&this.sliderElem.removeEventListener("mouseenter",this.showTooltip,!1),this.hideTooltip&&this.sliderElem.removeEventListener("mouseleave",this.hideTooltip,!1),this.sliderElem.removeEventListener("touchstart",this.touchstart,!1),this.sliderElem.removeEventListener("touchmove",this.touchmove,!1),this.sliderElem.removeEventListener("mousedown",this.mousedown,!1),window.removeEventListener("resize",this.resize,!1)},_bindNonQueryEventHandler:function(a,b){void 0===this.eventToCallbackMap[a]&&(this.eventToCallbackMap[a]=[]),this.eventToCallbackMap[a].push(b)},_unbindNonQueryEventHandler:function(a,b){var c=this.eventToCallbackMap[a];if(void 0!==c)for(var d=0;d<c.length;d++)if(c[d]===b){c.splice(d,1);break}},_cleanUpEventCallbacksMap:function(){for(var a=Object.keys(this.eventToCallbackMap),b=0;b<a.length;b++){var c=a[b];delete this.eventToCallbackMap[c]}},_showTooltip:function(){this.options.tooltip_split===!1?(this._addClass(this.tooltip,"in"),this.tooltip_min.style.display="none",this.tooltip_max.style.display="none"):(this._addClass(this.tooltip_min,"in"),this._addClass(this.tooltip_max,"in"),this.tooltip.style.display="none"),this._state.over=!0},_hideTooltip:function(){this._state.inDrag===!1&&this.alwaysShowTooltip!==!0&&(this._removeClass(this.tooltip,"in"),this._removeClass(this.tooltip_min,"in"),this._removeClass(this.tooltip_max,"in")),this._state.over=!1},_setToolTipOnMouseOver:function(a){function b(a,b){return b?[100-a.percentage[0],this.options.range?100-a.percentage[1]:a.percentage[1]]:[a.percentage[0],a.percentage[1]]}var c=this.options.formatter(a?a.value[0]:this._state.value[0]),d=a?b(a,this.options.reversed):b(this._state,this.options.reversed);this._setText(this.tooltipInner,c),this.tooltip.style[this.stylePos]=d[0]+"%"},_addTickListener:function(){return{addMouseEnter:function(a,b,c){var d=function(){var b=a._state,d=c>=0?c:this.attributes["aria-valuenow"].value,e=parseInt(d,10);b.value[0]=e,b.percentage[0]=a.options.ticks_positions[e],a._setToolTipOnMouseOver(b),a._showTooltip()};return b.addEventListener("mouseenter",d,!1),d},addMouseLeave:function(a,b){var c=function(){a._hideTooltip()};return b.addEventListener("mouseleave",c,!1),c}}},_layout:function(){var a;if(a=this.options.reversed?[100-this._state.percentage[0],this.options.range?100-this._state.percentage[1]:this._state.percentage[1]]:[this._state.percentage[0],this._state.percentage[1]],this.handle1.style[this.stylePos]=a[0]+"%",this.handle1.setAttribute("aria-valuenow",this._state.value[0]),isNaN(this.options.formatter(this._state.value[0]))&&this.handle1.setAttribute("aria-valuetext",this.options.formatter(this._state.value[0])),this.handle2.style[this.stylePos]=a[1]+"%",this.handle2.setAttribute("aria-valuenow",this._state.value[1]),isNaN(this.options.formatter(this._state.value[1]))&&this.handle2.setAttribute("aria-valuetext",this.options.formatter(this._state.value[1])),this.rangeHighlightElements.length>0&&Array.isArray(this.options.rangeHighlights)&&this.options.rangeHighlights.length>0)for(var b=0;b<this.options.rangeHighlights.length;b++){var c=this._toPercentage(this.options.rangeHighlights[b].start),d=this._toPercentage(this.options.rangeHighlights[b].end);if(this.options.reversed){var e=100-d;d=100-c,c=e}var f=this._createHighlightRange(c,d);f?"vertical"===this.options.orientation?(this.rangeHighlightElements[b].style.top=f.start+"%",this.rangeHighlightElements[b].style.height=f.size+"%"):(this.options.rtl?this.rangeHighlightElements[b].style.right=f.start+"%":this.rangeHighlightElements[b].style.left=f.start+"%",this.rangeHighlightElements[b].style.width=f.size+"%"):this.rangeHighlightElements[b].style.display="none"}if(Array.isArray(this.options.ticks)&&this.options.ticks.length>0){var g,h="vertical"===this.options.orientation?"height":"width";g="vertical"===this.options.orientation?"marginTop":this.options.rtl?"marginRight":"marginLeft";var i=this._state.size/(this.options.ticks.length-1);if(this.tickLabelContainer){var j=0;if(0===this.options.ticks_positions.length)"vertical"!==this.options.orientation&&(this.tickLabelContainer.style[g]=-i/2+"px"),j=this.tickLabelContainer.offsetHeight;else for(k=0;k<this.tickLabelContainer.childNodes.length;k++)this.tickLabelContainer.childNodes[k].offsetHeight>j&&(j=this.tickLabelContainer.childNodes[k].offsetHeight);"horizontal"===this.options.orientation&&(this.sliderElem.style.marginBottom=j+"px")}for(var k=0;k<this.options.ticks.length;k++){var l=this.options.ticks_positions[k]||this._toPercentage(this.options.ticks[k]);this.options.reversed&&(l=100-l),this.ticks[k].style[this.stylePos]=l+"%",this._removeClass(this.ticks[k],"in-selection"),this.options.range?l>=a[0]&&l<=a[1]&&this._addClass(this.ticks[k],"in-selection"):"after"===this.options.selection&&l>=a[0]?this._addClass(this.ticks[k],"in-selection"):"before"===this.options.selection&&l<=a[0]&&this._addClass(this.ticks[k],"in-selection"),this.tickLabels[k]&&(this.tickLabels[k].style[h]=i+"px","vertical"!==this.options.orientation&&void 0!==this.options.ticks_positions[k]?(this.tickLabels[k].style.position="absolute",this.tickLabels[k].style[this.stylePos]=l+"%",this.tickLabels[k].style[g]=-i/2+"px"):"vertical"===this.options.orientation&&(this.options.rtl?this.tickLabels[k].style.marginRight=this.sliderElem.offsetWidth+"px":this.tickLabels[k].style.marginLeft=this.sliderElem.offsetWidth+"px",this.tickLabelContainer.style[g]=this.sliderElem.offsetWidth/2*-1+"px"))}}var m;if(this.options.range){m=this.options.formatter(this._state.value),this._setText(this.tooltipInner,m),this.tooltip.style[this.stylePos]=(a[1]+a[0])/2+"%";var n=this.options.formatter(this._state.value[0]);this._setText(this.tooltipInner_min,n);var o=this.options.formatter(this._state.value[1]);this._setText(this.tooltipInner_max,o),this.tooltip_min.style[this.stylePos]=a[0]+"%",this.tooltip_max.style[this.stylePos]=a[1]+"%"}else m=this.options.formatter(this._state.value[0]),this._setText(this.tooltipInner,m),this.tooltip.style[this.stylePos]=a[0]+"%";if("vertical"===this.options.orientation)this.trackLow.style.top="0",this.trackLow.style.height=Math.min(a[0],a[1])+"%",this.trackSelection.style.top=Math.min(a[0],a[1])+"%",this.trackSelection.style.height=Math.abs(a[0]-a[1])+"%",this.trackHigh.style.bottom="0",this.trackHigh.style.height=100-Math.min(a[0],a[1])-Math.abs(a[0]-a[1])+"%";else{"right"===this.stylePos?this.trackLow.style.right="0":this.trackLow.style.left="0",this.trackLow.style.width=Math.min(a[0],a[1])+"%","right"===this.stylePos?this.trackSelection.style.right=Math.min(a[0],a[1])+"%":this.trackSelection.style.left=Math.min(a[0],a[1])+"%",this.trackSelection.style.width=Math.abs(a[0]-a[1])+"%","right"===this.stylePos?this.trackHigh.style.left="0":this.trackHigh.style.right="0",this.trackHigh.style.width=100-Math.min(a[0],a[1])-Math.abs(a[0]-a[1])+"%";var p=this.tooltip_min.getBoundingClientRect(),q=this.tooltip_max.getBoundingClientRect();"bottom"===this.options.tooltip_position?p.right>q.left?(this._removeClass(this.tooltip_max,"bottom"),this._addClass(this.tooltip_max,"top"),this.tooltip_max.style.top="",this.tooltip_max.style.bottom="22px"):(this._removeClass(this.tooltip_max,"top"),this._addClass(this.tooltip_max,"bottom"),this.tooltip_max.style.top=this.tooltip_min.style.top,this.tooltip_max.style.bottom=""):p.right>q.left?(this._removeClass(this.tooltip_max,"top"),this._addClass(this.tooltip_max,"bottom"),this.tooltip_max.style.top="18px"):(this._removeClass(this.tooltip_max,"bottom"),this._addClass(this.tooltip_max,"top"),this.tooltip_max.style.top=this.tooltip_min.style.top)}},_createHighlightRange:function(a,b){return this._isHighlightRange(a,b)?a>b?{start:b,size:a-b}:{start:a,size:b-a}:null},_isHighlightRange:function(a,b){return a>=0&&100>=a&&b>=0&&100>=b?!0:!1},_resize:function(a){this._state.offset=this._offset(this.sliderElem),this._state.size=this.sliderElem[this.sizePos],this._layout()},_removeProperty:function(a,b){a.style.removeProperty?a.style.removeProperty(b):a.style.removeAttribute(b)},_mousedown:function(a){if(!this._state.enabled)return!1;this._state.offset=this._offset(this.sliderElem),this._state.size=this.sliderElem[this.sizePos];var b=this._getPercentage(a);if(this.options.range){var c=Math.abs(this._state.percentage[0]-b),d=Math.abs(this._state.percentage[1]-b);this._state.dragged=d>c?0:1,this._adjustPercentageForRangeSliders(b)}else this._state.dragged=0;this._state.percentage[this._state.dragged]=b,this._layout(),this.touchCapable&&(document.removeEventListener("touchmove",this.mousemove,!1),document.removeEventListener("touchend",this.mouseup,!1)),this.mousemove&&document.removeEventListener("mousemove",this.mousemove,!1),this.mouseup&&document.removeEventListener("mouseup",this.mouseup,!1),this.mousemove=this._mousemove.bind(this),this.mouseup=this._mouseup.bind(this),this.touchCapable&&(document.addEventListener("touchmove",this.mousemove,!1),document.addEventListener("touchend",this.mouseup,!1)),document.addEventListener("mousemove",this.mousemove,!1),document.addEventListener("mouseup",this.mouseup,!1),this._state.inDrag=!0;var e=this._calculateValue();return this._trigger("slideStart",e),this._setDataVal(e),this.setValue(e,!1,!0),a.returnValue=!1,this.options.focus&&this._triggerFocusOnHandle(this._state.dragged),!0},_touchstart:function(a){if(void 0===a.changedTouches)return void this._mousedown(a);var b=a.changedTouches[0];this.touchX=b.pageX,this.touchY=b.pageY},_triggerFocusOnHandle:function(a){0===a&&this.handle1.focus(),1===a&&this.handle2.focus()},_keydown:function(a,b){if(!this._state.enabled)return!1;var c;switch(b.keyCode){case 37:case 40:c=-1;break;case 39:case 38:c=1}if(c){if(this.options.natural_arrow_keys){var d="vertical"===this.options.orientation&&!this.options.reversed,e="horizontal"===this.options.orientation&&this.options.reversed;(d||e)&&(c=-c)}var f=this._state.value[a]+c*this.options.step,g=f/this.options.max*100;if(this._state.keyCtrl=a,this.options.range){this._adjustPercentageForRangeSliders(g);var h=this._state.keyCtrl?this._state.value[0]:f,i=this._state.keyCtrl?f:this._state.value[1];f=[h,i]}return this._trigger("slideStart",f),this._setDataVal(f),this.setValue(f,!0,!0),this._setDataVal(f),this._trigger("slideStop",f),this._layout(),this._pauseEvent(b),delete this._state.keyCtrl,!1}},_pauseEvent:function(a){a.stopPropagation&&a.stopPropagation(),a.preventDefault&&a.preventDefault(),a.cancelBubble=!0,a.returnValue=!1},_mousemove:function(a){if(!this._state.enabled)return!1;var b=this._getPercentage(a);this._adjustPercentageForRangeSliders(b),this._state.percentage[this._state.dragged]=b,this._layout();var c=this._calculateValue(!0);return this.setValue(c,!0,!0),!1},_touchmove:function(a){if(void 0!==a.changedTouches){var b=a.changedTouches[0],c=b.pageX-this.touchX,d=b.pageY-this.touchY;this._state.inDrag||("vertical"===this.options.orientation&&5>=c&&c>=-5&&(d>=15||-15>=d)?this._mousedown(a):5>=d&&d>=-5&&(c>=15||-15>=c)&&this._mousedown(a))}},_adjustPercentageForRangeSliders:function(a){if(this.options.range){var b=this._getNumDigitsAfterDecimalPlace(a);b=b?b-1:0;var c=this._applyToFixedAndParseFloat(a,b);0===this._state.dragged&&this._applyToFixedAndParseFloat(this._state.percentage[1],b)<c?(this._state.percentage[0]=this._state.percentage[1],this._state.dragged=1):1===this._state.dragged&&this._applyToFixedAndParseFloat(this._state.percentage[0],b)>c?(this._state.percentage[1]=this._state.percentage[0],this._state.dragged=0):0===this._state.keyCtrl&&this._state.value[1]/this.options.max*100<a?(this._state.percentage[0]=this._state.percentage[1],this._state.keyCtrl=1,this.handle2.focus()):1===this._state.keyCtrl&&this._state.value[0]/this.options.max*100>a&&(this._state.percentage[1]=this._state.percentage[0],this._state.keyCtrl=0,this.handle1.focus())}},_mouseup:function(){if(!this._state.enabled)return!1;this.touchCapable&&(document.removeEventListener("touchmove",this.mousemove,!1),document.removeEventListener("touchend",this.mouseup,!1)),document.removeEventListener("mousemove",this.mousemove,!1),document.removeEventListener("mouseup",this.mouseup,!1),this._state.inDrag=!1,this._state.over===!1&&this._hideTooltip();var a=this._calculateValue(!0);return this._layout(),this._setDataVal(a),this._trigger("slideStop",a),!1},_calculateValue:function(a){var b;if(this.options.range?(b=[this.options.min,this.options.max],0!==this._state.percentage[0]&&(b[0]=this._toValue(this._state.percentage[0]),b[0]=this._applyPrecision(b[0])),100!==this._state.percentage[1]&&(b[1]=this._toValue(this._state.percentage[1]),b[1]=this._applyPrecision(b[1]))):(b=this._toValue(this._state.percentage[0]),b=parseFloat(b),b=this._applyPrecision(b)),a){for(var c=[b,1/0],d=0;d<this.options.ticks.length;d++){var e=Math.abs(this.options.ticks[d]-b);e<=c[1]&&(c=[this.options.ticks[d],e])}if(c[1]<=this.options.ticks_snap_bounds)return c[0]}return b},_applyPrecision:function(a){var b=this.options.precision||this._getNumDigitsAfterDecimalPlace(this.options.step);return this._applyToFixedAndParseFloat(a,b)},_getNumDigitsAfterDecimalPlace:function(a){var b=(""+a).match(/(?:\.(\d+))?(?:[eE]([+-]?\d+))?$/);return b?Math.max(0,(b[1]?b[1].length:0)-(b[2]?+b[2]:0)):0},_applyToFixedAndParseFloat:function(a,b){var c=a.toFixed(b);return parseFloat(c)},_getPercentage:function(a){!this.touchCapable||"touchstart"!==a.type&&"touchmove"!==a.type||(a=a.touches[0]);var b=a[this.mousePos],c=this._state.offset[this.stylePos],d=b-c;"right"===this.stylePos&&(d=-d);var e=d/this._state.size*100;return e=Math.round(e/this._state.percentage[2])*this._state.percentage[2],this.options.reversed&&(e=100-e),Math.max(0,Math.min(100,e))},_validateInputValue:function(a){if(isNaN(+a)){if(Array.isArray(a))return this._validateArray(a),a;throw new Error(f.formatInvalidInputErrorMsg(a))}return+a},_validateArray:function(a){for(var b=0;b<a.length;b++){
+var c=a[b];if("number"!=typeof c)throw new Error(f.formatInvalidInputErrorMsg(c))}},_setDataVal:function(a){this.element.setAttribute("data-value",a),this.element.setAttribute("value",a),this.element.value=a},_trigger:function(b,c){c=c||0===c?c:void 0;var d=this.eventToCallbackMap[b];if(d&&d.length)for(var e=0;e<d.length;e++){var f=d[e];f(c)}a&&this._triggerJQueryEvent(b,c)},_triggerJQueryEvent:function(a,b){var c={type:a,value:b};this.$element.trigger(c),this.$sliderElem.trigger(c)},_unbindJQueryEventHandlers:function(){this.$element.off(),this.$sliderElem.off()},_setText:function(a,b){"undefined"!=typeof a.textContent?a.textContent=b:"undefined"!=typeof a.innerText&&(a.innerText=b)},_removeClass:function(a,b){for(var c=b.split(" "),d=a.className,e=0;e<c.length;e++){var f=c[e],g=new RegExp("(?:\\s|^)"+f+"(?:\\s|$)");d=d.replace(g," ")}a.className=d.trim()},_addClass:function(a,b){for(var c=b.split(" "),d=a.className,e=0;e<c.length;e++){var f=c[e],g=new RegExp("(?:\\s|^)"+f+"(?:\\s|$)"),h=g.test(d);h||(d+=" "+f)}a.className=d.trim()},_offsetLeft:function(a){return a.getBoundingClientRect().left},_offsetRight:function(a){return a.getBoundingClientRect().right},_offsetTop:function(a){for(var b=a.offsetTop;(a=a.offsetParent)&&!isNaN(a.offsetTop);)b+=a.offsetTop,"BODY"!==a.tagName&&(b-=a.scrollTop);return b},_offset:function(a){return{left:this._offsetLeft(a),right:this._offsetRight(a),top:this._offsetTop(a)}},_css:function(b,c,d){if(a)a.style(b,c,d);else{var e=c.replace(/^-ms-/,"ms-").replace(/-([\da-z])/gi,function(a,b){return b.toUpperCase()});b.style[e]=d}},_toValue:function(a){return this.options.scale.toValue.apply(this,[a])},_toPercentage:function(a){return this.options.scale.toPercentage.apply(this,[a])},_setTooltipPosition:function(){var a=[this.tooltip,this.tooltip_min,this.tooltip_max];if("vertical"===this.options.orientation){var b;b=this.options.tooltip_position?this.options.tooltip_position:this.options.rtl?"left":"right";var c="left"===b?"right":"left";a.forEach(function(a){this._addClass(a,b),a.style[c]="100%"}.bind(this))}else"bottom"===this.options.tooltip_position?a.forEach(function(a){this._addClass(a,"bottom"),a.style.top="22px"}.bind(this)):a.forEach(function(a){this._addClass(a,"top"),a.style.top=-this.tooltip.outerHeight-14+"px"}.bind(this))}},a&&a.fn){var h=void 0;a.fn.slider?(windowIsDefined&&window.console.warn("bootstrap-slider.js - WARNING: $.fn.slider namespace is already bound. Use the $.fn.bootstrapSlider namespace instead."),h=c):(a.bridget(b,d),h=b),a.bridget(c,d),a(function(){a("input[data-provide=slider]")[h]()})}}(a),d});
+
+</script>
+<style>
+.slider{display:inline-block;vertical-align:middle;position:relative}.slider.slider-horizontal{width:210px;height:20px}.slider.slider-horizontal .slider-track{height:10px;width:100%;margin-top:-5px;top:50%;left:0}.slider.slider-horizontal .slider-selection,.slider.slider-horizontal .slider-track-low,.slider.slider-horizontal .slider-track-high{height:100%;top:0;bottom:0}.slider.slider-horizontal .slider-tick,.slider.slider-horizontal .slider-handle{margin-left:-10px}.slider.slider-horizontal .slider-tick.triangle,.slider.slider-horizontal .slider-handle.triangle{position:relative;top:50%;-ms-transform:translateY(-50%);transform:translateY(-50%);border-width:0 10px 10px 10px;width:0;height:0;border-bottom-color:#2e6da4;margin-top:0}.slider.slider-horizontal .slider-tick-container{white-space:nowrap;position:absolute;top:0;left:0;width:100%}.slider.slider-horizontal .slider-tick-label-container{white-space:nowrap;margin-top:20px}.slider.slider-horizontal .slider-tick-label-container .slider-tick-label{padding-top:4px;display:inline-block;text-align:center}.slider.slider-horizontal .tooltip{-ms-transform:translateX(-50%);transform:translateX(-50%)}.slider.slider-horizontal.slider-rtl .slider-track{left:initial;right:0}.slider.slider-horizontal.slider-rtl .slider-tick,.slider.slider-horizontal.slider-rtl .slider-handle{margin-left:initial;margin-right:-10px}.slider.slider-horizontal.slider-rtl .slider-tick-container{left:initial;right:0}.slider.slider-horizontal.slider-rtl .tooltip{-ms-transform:translateX(50%);transform:translateX(50%)}.slider.slider-vertical{height:210px;width:20px}.slider.slider-vertical .slider-track{width:10px;height:100%;left:25%;top:0}.slider.slider-vertical .slider-selection{width:100%;left:0;top:0;bottom:0}.slider.slider-vertical .slider-track-low,.slider.slider-vertical .slider-track-high{width:100%;left:0;right:0}.slider.slider-vertical .slider-tick,.slider.slider-vertical .slider-handle{margin-top:-10px}.slider.slider-vertical .slider-tick.triangle,.slider.slider-vertical .slider-handle.triangle{border-width:10px 0 10px 10px;width:1px;height:1px;border-left-color:#2e6da4;border-right-color:#2e6da4;margin-left:0;margin-right:0}.slider.slider-vertical .slider-tick-label-container{white-space:nowrap}.slider.slider-vertical .slider-tick-label-container .slider-tick-label{padding-left:4px}.slider.slider-vertical .tooltip{-ms-transform:translateY(-50%);transform:translateY(-50%)}.slider.slider-vertical.slider-rtl .slider-track{left:initial;right:25%}.slider.slider-vertical.slider-rtl .slider-selection{left:initial;right:0}.slider.slider-vertical.slider-rtl .slider-tick.triangle,.slider.slider-vertical.slider-rtl .slider-handle.triangle{border-width:10px 10px 10px 0}.slider.slider-vertical.slider-rtl .slider-tick-label-container .slider-tick-label{padding-left:initial;padding-right:4px}.slider.slider-disabled .slider-handle{background-image:-webkit-linear-gradient(top,#dfdfdf 0,#bebebe 100%);background-image:-o-linear-gradient(top,#dfdfdf 0,#bebebe 100%);background-image:linear-gradient(to bottom,#dfdfdf 0,#bebebe 100%);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffdfdfdf',endColorstr='#ffbebebe',GradientType=0)}.slider.slider-disabled .slider-track{background-image:-webkit-linear-gradient(top,#e5e5e5 0,#e9e9e9 100%);background-image:-o-linear-gradient(top,#e5e5e5 0,#e9e9e9 100%);background-image:linear-gradient(to bottom,#e5e5e5 0,#e9e9e9 100%);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffe5e5e5',endColorstr='#ffe9e9e9',GradientType=0);cursor:not-allowed}.slider input{display:none}.slider .tooltip.top{margin-top:-36px}.slider .tooltip-inner{white-space:nowrap;max-width:none}.slider .hide{display:none}.slider-track{position:absolute;cursor:pointer;background-image:-webkit-linear-gradient(top,#f5f5f5 0,#f9f9f9 100%);background-image:-o-linear-gradient(top,#f5f5f5 0,#f9f9f9 100%);background-image:linear-gradient(to bottom,#f5f5f5 0,#f9f9f9 100%);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff5f5f5',endColorstr='#fff9f9f9',GradientType=0);-webkit-box-shadow:inset 0 1px 2px rgba(0,0,0,0.1);box-shadow:inset 0 1px 2px rgba(0,0,0,0.1);border-radius:4px}.slider-selection{position:absolute;background-image:-webkit-linear-gradient(top,#f9f9f9 0,#f5f5f5 100%);background-image:-o-linear-gradient(top,#f9f9f9 0,#f5f5f5 100%);background-image:linear-gradient(to bottom,#f9f9f9 0,#f5f5f5 100%);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff9f9f9',endColorstr='#fff5f5f5',GradientType=0);-webkit-box-shadow:inset 0 -1px 0 rgba(0,0,0,0.15);box-shadow:inset 0 -1px 0 rgba(0,0,0,0.15);-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;border-radius:4px}.slider-selection.tick-slider-selection{background-image:-webkit-linear-gradient(top,#8ac1ef 0,#82b3de 100%);background-image:-o-linear-gradient(top,#8ac1ef 0,#82b3de 100%);background-image:linear-gradient(to bottom,#8ac1ef 0,#82b3de 100%);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff8ac1ef',endColorstr='#ff82b3de',GradientType=0)}.slider-track-low,.slider-track-high{position:absolute;background:transparent;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;border-radius:4px}.slider-handle{position:absolute;top:0;width:20px;height:20px;background-color:#337ab7;background-image:-webkit-linear-gradient(top,#337ab7 0,#2e6da4 100%);background-image:-o-linear-gradient(top,#337ab7 0,#2e6da4 100%);background-image:linear-gradient(to bottom,#337ab7 0,#2e6da4 100%);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff337ab7',endColorstr='#ff2e6da4',GradientType=0);filter:none;-webkit-box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 1px 2px rgba(0,0,0,.05);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 1px 2px rgba(0,0,0,.05);border:0 solid transparent}.slider-handle.round{border-radius:50%}.slider-handle.triangle{background:transparent none}.slider-handle.custom{background:transparent none}.slider-handle.custom::before{line-height:20px;font-size:20px;content:'\2605';color:#726204}.slider-tick{position:absolute;width:20px;height:20px;background-image:-webkit-linear-gradient(top,#f9f9f9 0,#f5f5f5 100%);background-image:-o-linear-gradient(top,#f9f9f9 0,#f5f5f5 100%);background-image:linear-gradient(to bottom,#f9f9f9 0,#f5f5f5 100%);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff9f9f9',endColorstr='#fff5f5f5',GradientType=0);-webkit-box-shadow:inset 0 -1px 0 rgba(0,0,0,0.15);box-shadow:inset 0 -1px 0 rgba(0,0,0,0.15);-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;filter:none;opacity:.8;border:0 solid transparent}.slider-tick.round{border-radius:50%}.slider-tick.triangle{background:transparent none}.slider-tick.custom{background:transparent none}.slider-tick.custom::before{line-height:20px;font-size:20px;content:'\2605';color:#726204}.slider-tick.in-selection{background-image:-webkit-linear-gradient(top,#8ac1ef 0,#82b3de 100%);background-image:-o-linear-gradient(top,#8ac1ef 0,#82b3de 100%);background-image:linear-gradient(to bottom,#8ac1ef 0,#82b3de 100%);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff8ac1ef',endColorstr='#ff82b3de',GradientType=0);opacity:1}
+
+
+
+body{
+    margin-left: 10px; 
+    margin-right: 10px;
+}
+#map{
+    overflow: auto;
+}
+
+
+svg{
+    display: block;
+    margin: auto;
+}
+#userInputArea{
+    text-align: center;
+    display: block;
+    margin: auto;
+}
+#slider12a .slider-track-high, #slider12c .slider-track-high {
+    background: red;
+}
+
+
+#slider12a .slider-selection {
+    background: blue;
+}
+.center{
+    text-align: center;
+    display: block;
+    margin: auto;
+}
+.normal{
+       text-align: left;
+       background-color: #e6f7ff;
+
+       overflow: scroll;
+       padding-left: 10px;
+       margin: 0 auto;
+
+}
+</style>
+</head>
+<body>
+    <div class="content">
+
+
+        <section>
+        <h1 class="hed center">The Shortest Splitline Algorithm</h1><h2 class="dek center">Gerrymandering and Political Districting</h2><div class="byline center">By: <a href="#">Devin Garg, Sofie Blankenship, Ryan Fok, Quan The Tran</a></div></div><p class="container">The shortest splitline algorithm is a simple mechanical procedure that can be used for drawing lines to form political districts, based solely on population. Currently, political districts in the United States are drawn through gerrymandering, which is a practice intended to establish an advantage for a certain political party or group. By using the shortest splitline algorithm, political districts can be drawn based on the population of certain regions, thus eliminating the bias of gerrymandering. Though in some cases, this may not eliminate political advantages, it nevertheless is an unbiased method of political districting that would elicit less controversy.</p>
+                <svg width="900" height="800" border = "1" id='mySVG'></svg>
+              
+
+                <script src="https://d3js.org/d3.v4.min.js"></script>
+                <script src="https://d3js.org/topojson.v2.min.js"></script>
+                <script src="https://d3js.org/d3-array.v1.min.js"></script>
+                <script src="https://d3js.org/d3-geo.v1.min.js"></script>
+
+                <script>
+                // var shouldStop = -1;
+                document.addEventListener('DOMContentLoaded', function () {
+                    // var isRunning = true; 
+return
+                    setUpPoints(100, 49);
+                   splitShape(startShape, points, 7);
+                   document.getElementById("runTheLines").addEventListener("click", runNewLines)
+                   // isRunning = false
+                   var sliderA = new Slider("#ex12a", { id: "slider12a", min: 0, max: 100, value: 50 });
+                   // console.log(sliderA)
+                    sliderA.on("change", function(slidersA){
+                        // console.log(slidersA)
+                        document.getElementById("blueNumber").innerText = slidersA.newValue
+                        document.getElementById("redNumber").innerText = sliderA.options.max - slidersA.newValue
+                    })
+                    var sliderTwo = new Slider("#ex7");
+
+                    sliderTwo.on("change", function(slidersTwo) {
+                         var sliderValueTwo = slidersTwo.newValue
+                        document.getElementById("ex7SliderVal").innerText = sliderValueTwo;
+                        // console.log(sliderA.options.max)
+                            var currentMax = sliderA.options.max
+                        var changeSliderValueDifference = Math.abs(slidersTwo.oldValue - slidersTwo.newValue)
+                        var shouldManullyCall = false
+                        if(sliderA.getValue() == 0){
+                            shouldManullyCall = true
+                        }
+                        if(slidersTwo.oldValue < slidersTwo.newValue){
+                             sliderA.option({max:currentMax+changeSliderValueDifference})
+                             sliderA.setValue((sliderA.getValue()/currentMax)*(currentMax+changeSliderValueDifference),false, true)
+
+                        } else{
+                            sliderA.option({max:currentMax-changeSliderValueDifference})
+                             sliderA.setValue((sliderA.getValue()/currentMax)*(currentMax-changeSliderValueDifference),false, true)
+
+                        }
+                        if(shouldManullyCall){
+
+                            document.getElementById("blueNumber").innerText = sliderA.getValue()
+                            document.getElementById("redNumber").innerText = sliderA.options.max - sliderA.getValue()
+        
+                        }
+
+                         // sliderA.options.value -= 10;
+                         // sliderA.setValue(10,false, true)
+                         // sliderA.option({max:200})
+                         // sliderA = new Slider("#ex12a", { id: "slider12a", min: 0, max: 100, value: 10 });
+
+                         // console.log(sliderA)
+                    })
+
+                    var slider = new Slider("#ex6");
+
+                    slider.on("change", function(sliders) {
+                            
+                        var sliderValue = sliders.newValue
+                        // console.log(sliderValue)
+                            
+                        // if(sliderValue - 1 != allMyLines.length){
+                            // console.log(isRunning)
+                            // if(isRunning){
+                            //     shouldStop = sliderValue;
+                            //     document.getElementById("ex6SliderVal").innerText = sliderValue;
+
+                            //     return
+                            // }
+                            // isRunning = true;
+
+                        
+
+                            document.getElementById("ex6SliderVal").innerText = sliderValue;
+
+    //                         setTimeout(function(){
+    // deleteAllLines();
+    //                             splitShape(startShape, points, sliderValue); 
+    //                             // isRunning = false
+    //                         }, 500);
+
+
+                             
+
+                        // }
+               
+                    });
+                })
+                var runNewLinesRunning = false
+                function runNewLines(argument) {
+
+                     d3.select("#appendLoc").append(function() { 
+
+                         var c = document.createElement("div");
+                        c.style.backgroundColor = '#001a00'
+                        c.style.color = 'white'
+                        c.role = 'alert'
+                        c.innerText = 'Running...'
+                        c.className="myRemoval"
+                        c.style.width = '50%'
+                        c.style.textAlign = 'center'
+                        c.className = 'myRemoval center'
+                        c.style.borderRadius = '40px'
+                         return c;
+                     });
+
+                   setTimeout(function(){
+                     console.log("runnign")
+                    if(runNewLinesRunning){return}
+                    console.log("come on running")
+                    runNewLinesRunning = true
+                    d3.select("#runTheLines")._groups[0][0].disabled = true
+                    console.log(document.getElementById("runTheLines"))
+                    deletePolygons()
+                    deleteAllLines(); 
+                    deleteAllPoints(); 
+                    setUpPoints(parseInt(document.getElementById("ex7SliderVal").innerText) , parseInt(document.getElementById("blueNumber").innerText) - 1);
+                     splitShape(startShape, points,parseInt(document.getElementById("ex6SliderVal").innerText)); 
+                    d3.select("#runTheLines")._groups[0][0].disabled = false
+                    runNewLinesRunning = false
+                }, 500)
+                }
+                    //var map = document.getElementById("map");
+                    // var pop = 100;
+                    var points = [];
+                    var allPoints = []
+                     var allMyLines = []
+                     var allPolygons = []
+                    var svg = d3.select("svg");
+                    // QT: I finish load object to XYPoints array.
+                    // var projection = d3.geoAlbersUsa().translate([1870, -600]).scale(5000); // alaska
+                    // var projection = d3.geoAlbersUsa().translate([1800, 450]).scale(4000); // California
+
+                    var projection = d3.geoAlbersUsa().translate([-700, 0]).scale(5000); //.translate([1800, 450]).scale(4000);
+                    var dataAlaska;
+                    var xyPoints = [];
+                    var peopleData;
+                    var peopleXY = []
+                    var convertObjectToFloat =  function(d) {
+                    	return {
+                    		lat: parseFloat(d.lat),
+							lon: parseFloat(d.lon),
+							state: d.state
+                    	};
+                    }
+                    var convertObjectToValues = function(e){
+                    	return {
+                    		personLat: parseFloat(e.LATITUDE),
+                    		personLon: parseFloat(e.LONGITUDE),
+                    		personPopulation: parseInt(e.POPULATION),
+                    		personState: e.StatesName,
+                    		personParty: parseFloat(e.ratioOfParties)
+                    	};
+                    }
+                    d3.csv("https://raw.githubusercontent.com/CSE442-17F/The-Shortest-Splitline-Algorithm-for-Gerrymandering/master/StateLatLongDataAllFinal.csv?token=APOGDIZFN0mHB8oEMEEuyZWSY4qcIChkks5aLeW0wA%3D%3D",
+                    convertObjectToFloat, function( data)	{
+                    	// if(error) { console.log(error);
+                    	// } else {
+                    		console.log(data);
+                    		dataAlaska = data;
+                    	
+
+                    	 // console.log(projection([dataAlaska[1].lon_Alaska,dataAlaska[1].lat_Alaska])[1]);
+                    	 xyPoints = arrayPixelsFromLonLat(dataAlaska,{});
+                    	      console.log(dataAlaska);
+                    		console.log(xyPoints);
+                    		var strPoints = ''
+                    		var stateNameLocal = "North Carolina"
+                    		for (var i = xyPoints[stateNameLocal].length - 1; i >= 0; i--) {
+                    			strPoints += xyPoints[stateNameLocal][i][0] +"," + xyPoints[stateNameLocal][i][1] + " ";
+                    		}
+                    		strPoints = strPoints.trim()
+                    		svg.append("polygon")
+                    		.attr("points", strPoints)
+                    		.attr("style","fill:white;stroke:black;stroke-width:1")
+
+                    		d3.csv("https://raw.githubusercontent.com/CSE442-17F/The-Shortest-Splitline-Algorithm-for-Gerrymandering/master/finalMergedResultWithState.csv?token=APOGDIJnOr-OwOiUPG1EGdLiY-Z0u6Gdks5aLff7wA%3D%3D", convertObjectToValues, function(valueData){
+                    			peopleData = valueData
+                    			peopleXY = arrayPixelsFromPeople(peopleData, {})
+                    			// var strPointsTwo = ''
+	                    		// for (var i = peopleXY[stateNameLocal].length - 1; i >= 0; i--) {
+	                    		// 	strPointsTwo += peopleXY[stateNameLocal][i][0] +"," + peopleXY[stateNameLocal][i][1] + " ";
+	                    		// }
+	                    		// strPointsTwo = strPointsTwo.trim()
+	                    		// svg.append("polygon")
+	                    		// .attr("points", strPointsTwo)
+	                    		// .attr("style","fill:white;stroke:black;stroke-width:1")
+
+	                    			svg.selectAll(".pin").data(peopleXY[stateNameLocal])
+			                        .enter().append("circle", ".pin")
+			                        .attr("r", 3)
+			                        .attr("transform", function(d) {
+			                            return "translate(" + 
+			                                d[0]
+			                                + ", " +
+			                                d[1]
+			                             + ")"
+			                        })
+			                        .attr("z-index", "100")
+			                        .attr("fill", function(d) { 
+			                        	// dems/gop
+			                            if(d[3] >= 0.5){
+			                                return "blue"
+			                            }
+			                            else{
+			                                return "red"
+			                            }
+			                        })
+                    		})
+                    });
+               
+                  	function arrayPixelsFromPeople(dataAlaska, xyPoints){
+                  		var res;
+						for (var i = 0; i < dataAlaska.length; i++) {
+                    		 var xAndYArray = [];
+
+                    		
+                    		// get back x from lattitude and longtitude
+                    		
+                    		 res = projection([dataAlaska[i].personLon,dataAlaska[i].personLat])
+                    		 console.log(dataAlaska[i], res)
+                    		 if(!res){continue}
+                    		xAndYArray.push(res[0]);
+                    		// // get back y from lattitude and longtitude
+                    		xAndYArray.push(res[1]);
+                    		xAndYArray.push(dataAlaska[i].personPopulation)
+                    		xAndYArray.push(dataAlaska[i].personParty)
+
+                    		if(xyPoints[dataAlaska[i].personState] == null){
+                    			xyPoints[dataAlaska[i].personState] = []
+                    		}
+                    		xyPoints[dataAlaska[i].personState].push(xAndYArray);                    		
+                    	}
+				 		return xyPoints;		
+                  	}
+                    function arrayPixelsFromLonLat(dataAlaska, xyPoints) {
+
+                    	for (var i = 0; i < dataAlaska.length; i++) {
+                    		 var xAndYArray = [];
+
+                    		
+                    		// get back x from lattitude and longtitude
+                    		console.log(dataAlaska[i])
+                    		xAndYArray.push(projection(
+                    			 [dataAlaska[i].lon,
+                    			 dataAlaska[i].lat])[0]);
+                    		// // get back y from lattitude and longtitude
+                    		xAndYArray.push(projection(
+                    			[dataAlaska[i].lon,
+                    			 dataAlaska[i].lat])[1]);
+                    		if(xyPoints[dataAlaska[i].state] == null){
+                    			xyPoints[dataAlaska[i].state] = []
+                    		}
+                    		xyPoints[dataAlaska[i].state].push(xAndYArray);                    		
+                    	}
+				 		return xyPoints;		
+                    }
+                   
+                    // debugger;
+                    // var borderPath = svg.append("rect")
+                    // .attr("x", 0)
+                    // .attr("y", 0)
+                    // .attr("height", 400)
+                    // .attr("width", 600)
+                    // .style("stroke", "pink")
+                    // .style("fill", "none")
+                    // .style("stroke-width", 1);
+                    function deleteAllPoints(){
+// show progress
+                           for (var i = allPoints[0]._groups[0].length - 1; i >= 0; i--) {
+                                allPoints[0]._groups[0][i].remove()
+                            }
+                             allPoints = []
+                    }
+                    function setUpPoints(pop, blueCount){
+                         points = [];
+                         allPoints = []
+                        for(i=0; i<pop; i++){
+                            if(i > blueCount){
+                                points[i] = {x: Math.floor(Math.random() * 601), y: Math.floor(Math.random() * 401), party: 1};
+
+                            } else{
+                                points[i] = {x: Math.floor(Math.random() * 601), y: Math.floor(Math.random() * 401), party: 0};
+
+                            }
+                        }
+                        
+                        allPoints.push(svg.selectAll(".pin").data(points)
+                        .enter().append("circle", ".pin")
+                        .attr("r", 3)
+                        .attr("transform", function(d) {
+                            return "translate(" + 
+                                d.x
+                                + ", " +
+                                d.y
+                             + ")"
+                        })
+                        .attr("z-index", "100")
+                        .attr("fill", function(d) {
+                            if(d["party"] == 0){
+                                return "blue"
+                            }
+                            else{
+                                return "red"
+                            }
+                        }))
+                    }
+                    //  drag and drop, hover over states show tooltip and blackout else, change outline shape, progress bar, idyll migration
+                    var startShape = [[0, 0], [600, 0], [600, 400], [0, 400]]
+                    
+                    for(i = 0; i<startShape.length; i++){
+                        // svg.append("line")
+                        // .attr("x1", startShape[i][0])
+                        // .attr("y1", startShape[i][1])
+                        // .attr("x2", startShape[(i+1)%startShape.length][0])
+                        // .attr("y2", startShape[(i+1)%startShape.length][1])
+                        // .attr("style", "stroke:pink; stroke-width:2")
+                    }
+                      
+                      
+
+                       function deleteAllLines(){
+                            for (var i = allMyLines.length - 1; i >= 0; i--) {
+                                allMyLines[i]._groups[0][0].remove()
+                            }
+                             allMyLines = []
+
+                       }
+                    function splitShape(corners, pop, numdist){
+                        // console.log(shouldStop)
+                        var progressReport = Math.round(((allMyLines.length+1)/(numdist+allMyLines.length))*100);
+
+                         document.getElementById("runningProgress").innerText = progressReport + "%"
+                         document.getElementById("runningProgress").style.width = progressReport + "%"
+                        // if(shouldStop > 0){
+                        //         var localStop = shouldStop
+                        //         shouldStop = -1;
+                        //         deleteAllLines();
+                        //         splitShape(startShape, points, localStop); 
+                        //         return
+                        // }  
+                         // isRunning = true
+                        if(numdist == 1){
+                            // if(shouldStop > 0){
+                            //     var localStop = shouldStop
+                            //     shouldStop = -1;
+                            //     deleteAllLines();
+                            //     splitShape(startShape, points, localStop); 
+                            //     return
+                            // }
+
+                            // console.log(isRunning)
+                            // console.log(pop)
+                             var numColors = {red: 0, blue: 0}
+                        for (var i = pop.length - 1; i >= 0; i--) {
+                            if(pop[i].party == 0){
+                                numColors.blue++;
+                            } else{
+                                numColors.red++;
+                            }
+                        }
+
+                        // console.log(numColors.blue, numColors.red)
+                        var polygon = document.createElement('polygon')
+
+                        var myCorners = ""
+                        for (var iter = corners.length - 1; iter >= 0; iter--) {
+                            myCorners += corners[iter][0] + "," + corners[iter][1] + " "
+                        }
+                        myCorners = myCorners.trim()
+                        if(numColors.blue > numColors.red){
+                            //   <polygon points="200,10 250,190 160,210" style="fill:lime;stroke:purple;stroke-width:1" />
+                                // console.log(myCorners)
+                        allPolygons.push(svg.selectAll("#mySVG").data([myCorners]).enter().insert("polygon", "circle")
+                        .attr("points", function(d){
+                            return d
+                        })
+                        .attr("style", "fill:blue;")
+                        .attr("opacity", "0.1"))
+                            // performBorderOperation(minLine, "black")
+                        } else if(numColors.blue < numColors.red){
+                                    // console.log(myCorners)
+                       allPolygons.push(svg.selectAll("#mySVG").data([myCorners]).enter().insert("polygon", "circle")
+                        .attr("points", function(d){
+                            return d
+                        })
+                        .attr("style", "fill:red;")
+                        .attr("opacity", "0.1"))
+
+
+                            // performBorderOperation(minLine, "black")
+                        } else{
+                                  console.log(myCorners)
+                        allPolygons.push(svg.selectAll("#mySVG").data([myCorners]).enter().insert("polygon", "circle")
+                        .attr("points", function(d){
+                            return d
+                        })
+                        .attr("style", "fill:white;")
+                        .attr("opacity", "0.1"))
+
+
+                            // performBorderOperation(minLine, "black")
+
+                        }
+                        if($(".myRemoval")[0]){
+                        $(".myRemoval")[0].remove()
+
+                        }
+
+                            return;
+                        }
+                        var maxx = 0;
+                        var maxy = 0;
+                        var minx = 600;
+                        var miny = 400;
+                        for(var i = 0; i<corners.length; i++){
+                            if(corners[i][0] > maxx){
+                                maxx = corners[i][0];
+                            }
+                            if(corners[i][1] > maxy){
+                                maxy = corners[i][1];
+                            }
+                            if(corners[i][0] < minx){
+                                minx = corners[i][0];
+                            }
+                            if(corners[i][1] < miny){
+                                miny = corners[i][1];
+                            }
+                        }
+                        var smaller = Math.floor(numdist/2);
+                        var larger = numdist - smaller;
+                        var goal = Math.floor(smaller/numdist * pop.length);
+                        // console.log(goal);
+                        var splitlines = [];
+                        for(var i = minx; i<maxx; i++){
+                            for(var j = miny; j<maxy; j++){
+                                var above = 0;
+                                for(var k = 0; k<pop.length; k++){
+                                    if(maxx != i && pop[k].y > ((j-miny)/(maxx-i))*(pop[k].x-i)+miny){
+                                        above++;
+                                    }
+                                }
+                                if(above == goal || above == pop.length-goal){
+                                    splitlines[splitlines.length] = {x1: i, y1: miny, x2: maxx, y2: j};
+                                }
+                            }
+                            for(var j = minx; j<maxx; j++){
+                                var above = 0;
+                                for(var k = 0; k<pop.length; k++){
+                                    if(j != i && pop[k].y > ((maxy-miny)/(j-i))*(pop[k].x-i)+miny){
+                                        above++;
+                                    }
+                                }
+                                if(above == goal || above == pop.length-goal){
+                                    splitlines[splitlines.length] = {x1: i, y1: miny, x2: j, y2: maxy};
+                                }
+                            }
+                            for(var j = miny; j<maxy; j++){
+                                var above = 0;
+                                for(var k = 0; k<pop.length; k++){
+                                    if(minx != i && pop[k].y > ((j-miny)/(minx-i))*(pop[k].x-i)+miny){
+                                        above++;
+                                    }
+                                }
+                                if(above == goal || above == pop.length-goal){
+                                    splitlines[splitlines.length] = {x1: i, y1: miny, x2: minx, y2: j};
+                                }
+                            }
+                        }
+                        
+                        for(var i = miny; i<maxy; i++){
+                            for(var j = miny; j<maxy; j++){
+                                var above = 0;
+                                for(var k = 0; k<pop.length; k++){
+                                    if(maxx != minx && pop[k].y > ((j-i)/(maxx-minx))*(pop[k].x-minx)+i){
+                                        above++;
+                                    }
+                                }
+                                if(above == goal || above == pop.length-goal){
+                                    splitlines[splitlines.length] = {x1: minx, y1: i, x2: maxx, y2: j};
+                                }
+                            }
+                            for(var j = minx; j<maxx; j++){
+                                var above = 0;
+                                for(var k = 0; k<pop.length; k++){
+                                    if(j != minx && pop[k].y > ((maxy-i)/(j-minx))*(pop[k].x-minx)+i){
+                                        above++;
+                                    }
+                                }
+                                if(above == goal || above == pop.length-goal){
+                                    splitlines[splitlines.length] = {x1: minx, y1: i, x2: j, y2: maxy};
+                                }
+                            }
+                        }
+                        
+                        for(var i = miny; i<maxy; i++){
+                            for(var j = minx; j<maxx; j++){
+                                var above = 0;
+                                for(var k = 0; k<pop.length; k++){
+                                    if(j != maxx && pop[k].y > ((maxy-i)/(j-maxx))*(pop[k].x-maxx)+i){
+                                        above++;
+                                    }
+                                }
+                                if(above == goal || above == pop.length-goal){
+                                    splitlines[splitlines.length] = {x1: maxx, y1: i, x2: j, y2: maxy};
+                                }
+                            }
+                        }
+                        var minLine = [{x1: 0, y1: 0, x2: 0, y2: 0}];
+                        var minLen = 10000000000;
+                        var oldLine = {x1: 0, y1: 0, x2: 0, y2: 0};
+                        
+                        for(var i = 0; i<splitlines.length; i++){
+                            var inters = [];
+                            for(j = 0; j<corners.length; j++){
+                                var inter = calculateIntersectionPoint(splitlines[i].x1, splitlines[i].y1, splitlines[i].x2, splitlines[i].y2,
+                                                            corners[j][0], corners[j][1], corners[(j+1)%corners.length][0], corners[(j+1)%corners.length][1]);
+                                if (inter != null){
+                                    inters[inters.length] = inter;
+                                }
+                            }
+                            if(inters.length == 2){
+                                var tmp = splitlines[i];
+                                splitlines[i] = {x1: inters[0][0], y1: inters[0][1], x2: inters[1][0], y2: inters[1][1]}
+                                var len = Math.pow((splitlines[i].x2-splitlines[i].x1), 2) + Math.pow((splitlines[i].y2-splitlines[i].y1), 2);
+                                if(len<=minLen){
+                                    minLen = len;
+                                    minLine = [splitlines[i]];
+                                    oldLine = tmp;
+                                }
+                            }
+                        }
+                        var flag = true;
+                        if(minLine[0].x1 != minLine[0].x2 && corners[0][1] <= ((minLine[0].y2-minLine[0].y1)/(minLine[0].x2-minLine[0].x1))*(corners[0][0]-minLine[0].x1)+minLine[0].y1){
+                            flag = false;
+                        }
+                        var stateA = [];
+                        var stateB = [];
+                        for(i = 0; i<corners.length; i++){
+                            var inter = calculateIntersectionPoint(oldLine.x1, oldLine.y1, oldLine.x2, oldLine.y2,
+                                                        corners[i][0], corners[i][1], corners[(i+1)%corners.length][0], corners[(i+1)%corners.length][1]);
+                            
+                            if(flag){
+                                stateA[stateA.length] = corners[i];
+                            }
+                            else{
+                                stateB[stateB.length] = corners[i];
+                            }
+                            if (inter != null){
+                                stateA[stateA.length] = [Math.floor(inter[0]), Math.floor(inter[1])];
+                                stateB[stateB.length] = [Math.floor(inter[0]), Math.floor(inter[1])];
+                                flag = !flag;
+                            }
+                        }
+                        var abovePt = [];
+                        var belowPt = [];
+                        
+                        for(var k = 0; k<pop.length; k++){
+                            if(minLine[0].x1 != minLine[0].x2 && pop[k].y > ((minLine[0].y2-minLine[0].y1)/(minLine[0].x2-minLine[0].x1))*(pop[k].x-minLine[0].x1)+minLine[0].y1){
+                                abovePt[abovePt.length] = pop[k];
+                            }
+                            else{
+                                belowPt[belowPt.length] = pop[k];
+                            }
+                        }
+                        // console.log(minLine)
+                       
+                        // svg.data(polygon).enter().append(polygon)
+                  
+                        // document.getElementById("mySVG").append(polygon)
+
+                        // console.log(abovePt);
+                        // console.log(belowPt);
+                        // console.log(stateA);
+                        // console.log(stateB);
+                        performBorderOperation(minLine,"black")
+                        if(abovePt.length >= belowPt.length){
+                            splitShape(stateA, abovePt, larger);
+                            splitShape(stateB, belowPt, smaller);
+                        } 
+                        else{
+                            splitShape(stateA, abovePt, smaller);
+                            splitShape(stateB, belowPt, larger);
+                        }
+                    }
+                    function deletePolygons(){
+                        console.log(allPolygons)
+                         for (var i = allPolygons.length - 1; i >= 0; i--) {
+                                allPolygons[i]._groups[0][0].remove()
+                            }
+                             allPolygons = []
+                    }
+                    function performBorderOperation(minLine, colorActual) {
+                          allMyLines.push(svg.selectAll(".split").data(minLine)
+                        .enter().append("line", ".split")
+                        .attr("x1", function(d) {
+                            return Math.floor(d.x1)
+                        })
+                        .attr("x2", function(d) {
+                            return Math.floor(d.x2)
+                        })
+                        .attr("y1", function(d) {
+                            return Math.floor(d.y1)
+                        })
+                        .attr("y2", function(d) {
+                            return Math.floor(d.y2)
+                        })
+                        .attr("style", "stroke:"+colorActual+"; stroke-width:2"))
+                    }
+
+                    function calculateIntersectionPoint(line1StartX, line1StartY, line1EndX, line1EndY, line2StartX, line2StartY, line2EndX, line2EndY) {
+                        var denominator, a, b, numerator1, numerator2, result = {
+                            x: null,
+                            y: null,
+                            onLine1: false,
+                            onLine2: false
+                        };
+                        denominator = ((line2EndY - line2StartY) * (line1EndX - line1StartX)) - ((line2EndX - line2StartX) * (line1EndY - line1StartY));
+                        if (denominator == 0) {
+                            return result;
+                        }
+                        a = line1StartY - line2StartY;
+                        b = line1StartX - line2StartX;
+                        numerator1 = ((line2EndX - line2StartX) * a) - ((line2EndY - line2StartY) * b);
+                        numerator2 = ((line1EndX - line1StartX) * a) - ((line1EndY - line1StartY) * b);
+                        a = numerator1 / denominator;
+                        b = numerator2 / denominator;
+
+                        result.x = line1StartX + (a * (line1EndX - line1StartX));
+                        result.y = line1StartY + (a * (line1EndY - line1StartY));
+                        if (a >= 0 && a <= 1) {
+                            result.onLine1 = true;
+                        }
+                        if (b >= 0 && b <= 1) {
+                            result.onLine2 = true;
+                        }
+
+                        if(result.onLine1 && result.onLine2){
+                            return [result.x, result.y];
+                        }
+                        else{
+                            return null;
+                        }
+                    };
+                    
+                </script>
+
+            
+
+        </section>
+        <div class="row" >
+           <div class="center">
+                  <div id="userInputArea">
+        <!-- show overall number of red and blue -->
+    <div class="progress" style="display: none;">
+            <div class="progress-bar" role="progressbar" style="width: 25%;" id="runningProgress">25%</div>
+        </div> 
+        <span id="ex6CurrentSliderValLabel">Number of States: <span id="ex6SliderVal">7</span></span><br>
+            <input id="ex6" type="text" data-slider-min="1" data-slider-max="20" data-slider-step="1" data-slider-value="7"/><br>
+            <span id="ex7CurrentSliderValLabel">Number of People: <span id="ex7SliderVal">100</span></span><br>
+            <input id="ex7" type="text" data-slider-min="10" data-slider-max="300" data-slider-step="10" data-slider-value="100"/>
+<br>
+            <div>
+                <span id="blueNumber" style="color: blue;">50</span>
+                <span>:</span>
+                <span id="redNumber" style="color: red;">50</span>
+            </div>
+            <input id="ex12a" type="text"/>
+            <div class="container">
+            <br>
+        <button type="button" class="btn btn-primary btn-lg btn-block" id="runTheLines">Run Again</button>
+                
+            </div>
+
+        </div>
+
+            </div>
+            <div class="center container">
+            <div id="appendLoc"></div>
+          <!--   Introduction: discussing applications and overall messages
+            Discuss Algorithm...
+            <h1>1. Decide Inputs</h1> We decide number of states, number of people  and the party ratio (Have interactive of the three sliders and button)
+            <h1>2. Draw Shortest Split line</h1> Equal number of points in each district and is optimizing the shortest sum of the edge length (Interactive of drawing each line)
+            <h1>3. Recurse</h1>How we are splitting (I will do interactive of highlighting the states that are beign recursed.)
+            Performance analysis:
+            Conclusion -->
+             <div id="idyll-mount"><div class="idyll-root" data-reactroot=""><section><div class="article-header"><h1>How the Algorithm Works</h1><p>The algorithm takes as input the shape of a country/state/region, the locations of its inhabitants, and a positive number <em>dists</em> representing desired number of districts. It then divides that country/state/region into <em>dists</em> equipopulous districts.</p><p>The pseudocode for the formal recursive algorithm is:</p><pre><div class="normal">shortestSplitline (region, dists) {
+  if dists = 1 then output the region as the district;
+  a = floor (dists / 2);
+  b = ceiling (dists / 2);
+  find the shortest splitline with a:b population ratio, breaking ties by the following criteria:
+  if exact-length tie, then use the line closest to North-South orientation, and if still a tie, use Westernmost line.
+  draw the splitline and split region into regionA and regionB;
+  shortestSplitline (regionA, a);
+  shortestSplitline (regionB, b);
+}</div></pre><h2>Step <!-- -->1<!-- -->: Choose inputs</h2><p>We first have to decide how many districts we want to divide the region into, and the population for the district. The locations for each inhabitant is chosen at random.</p><h2>Step <!-- -->2<!-- -->: Split the region into two districts</h2><p>We then find the shortest line that splits the region into two equipopulous districts and draw it.</p><h2>Step <!-- -->3<!-- -->: Recursively split districts into smaller districts</h2><p>If more districts are desired, we recurse by repeating step 2, using the subdistrict to find another shortest splitline that will further split it into two equipopulous districts.</p><h1>Performance Analysis</h1><p>The performance of the algorithm depends on the number of districts and the population of the region being drawn on. If more districts are desired, then the algorithm will have to recurse more, thus slowing the entire algorithm. Similarly, if there are more people living within a region, the algorithm has would have to examine more possible splitlines to find which is the shortest.</p><h1>Conclusion</h1><p>The shortest splitline algorithm can be used for unbiased political districting, as a replacement for the practice of gerrymandering. Rather than purposely giving one political party of group an advantage, the algorithm disregards party affiliations by splitting regions based on population.</p></section><div style="position:fixed" class="fixed"><div style="width:100%"></div></div></div></div>
+            </div>
+         
+        </div>
+      
+        <div class="footer">
+        </div>
+    </div>
+</body>
+</html>
+
+
