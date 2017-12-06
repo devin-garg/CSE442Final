@@ -1,0 +1,27 @@
+[meta title:"N" description:"Short description of your project" /]
+
+[Header
+  title:"N"
+  subtitle:"Welcome to Idyll. Open index.idl to start writing"
+  author:"Your Name Here"
+  authorLink:"https://idyll-lang.github.io" /]
+
+
+[var name:"stateName" statesNameNew:"Washington" /]
+[var name:"mySliderVal" value:10 /]
+[var name:"myMin" value:6 /]
+[var name:"myMax" value:14 /]
+[var name:"myStep" value:4 /]
+[var name:"myStackTraceVal" value:10 /]
+[var name:"myStackTraceMax" value:10 /]
+[MyDropdown statesNameNew:stateName min:myMin max:myMax step:myStep def:mySliderVal/]
+[CustomD3Component statesNameNew:stateName sliderWhich:mySliderVal stackLookingInto:myStackTraceVal/]
+
+
+
+[Range value:mySliderVal min:myMin max:myMax step:myStep myState:stateName changingStack:myStackTraceVal maxStack:myStackTraceMax /]
+[Display value:mySliderVal /]
+
+[StackTrace value:myStackTraceVal min:1 max:myStackTraceMax step:1 /]
+[Display value:myStackTraceVal /]
+
