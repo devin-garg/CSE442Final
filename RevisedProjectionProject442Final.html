@@ -209,8 +209,8 @@ return
                     // var projection = d3.geoAlbersUsa().translate([1870, -600]).scale(5000); // alaska
                      // var projection = d3.geoAlbersUsa().translate([1800, 450]).scale(4000); // California
 					// var projection = d3.geoAlbersUsa().translate([600, -120]).scale(4000); // Texas
-	// var projection = d3.geoAlbersUsa().translate([1700, 1300]).scale(5000) // washington
-                     var projection = d3.geoAlbersUsa().translate([-600, 100]).scale(4000); //.translate([1800, 450]).scale(4000);
+	 var projection = d3.geoAlbersUsa().translate([1700, 1300]).scale(5000) // washington
+                     // var projection = d3.geoAlbersUsa().translate([-600, 100]).scale(4000); //.translate([1800, 450]).scale(4000);
                     var dataAlaska;
                     var xyPoints = [];
                     var peopleData;
@@ -244,7 +244,7 @@ return
                     	      console.log(dataAlaska);
                     		console.log(xyPoints);
                     		var strPoints = ''
-                    		var stateNameLocal = "North Carolina"
+                    		var stateNameLocal = "Washington"
                     		for (var i = xyPoints[stateNameLocal].length - 1; i >= 0; i--) {
                     			strPoints += xyPoints[stateNameLocal][i][0] +"," + xyPoints[stateNameLocal][i][1] + " ";
                     		}
@@ -286,11 +286,11 @@ return
 			                            }
 			                        })
 			                        console.log("spliting")
-                                splitShape(xyPoints[stateNameLocal], peopleXY[stateNameLocal], 9);
+                                splitShape(xyPoints[stateNameLocal], peopleXY[stateNameLocal], 10);
 			                        console.log("hello")
 			                        document.getElementById('myTextArea').innerText = cornersBuilder.join("y")  
 			                        document.getElementById('myTextArea2').innerText = minLineBuilder.join("y")
-									document.getElementById('myTextArea3').innerText = popBuilder.join(",")
+									document.getElementById('myTextArea3').innerText = popBuilder.join(",").substring(0, popBuilder.join(",").length - 1)
                     		})
                     });
                
@@ -446,12 +446,12 @@ return
 
 
                              var numColors = {red: 0, blue: 0}
-                        for (var i = pop.length - 1; i >= 0; i--) {
+                   	 for (var i = pop.length - 1; i >= 0; i--) {
                         	// dems/gop
-                                numColors.blue += pop[i].party * pop[i].people;
-                                numColors.red += pop[i].people
-                        }
-                        popBuilder.push(numColors.blue > numColors.red)
+                                numColors.blue += pop[i].party/(pop[i].party+1) * pop[i].people;
+                                numColors.red += 1/(pop[i].party+1) * pop[i].people
+                        }   
+                        popBuilder.push(numColors.blue +'r' + numColors.red)
                         // console.log(numColors.blue, numColors.red)
                         var polygon = document.createElement('polygon')
 
