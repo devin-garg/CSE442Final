@@ -138,40 +138,18 @@ The shortest splitline algorithm can be used for unbiased political districting,
 [var name:"myStackTraceMax" value:10 /]
 
 Choose what state to visualize: 
-[Dropdown 
-  statesnamenew:stateName 
-  min:myMin 
-  max:myMax 
-  step:myStep 
-  def:mySliderVal 
-  changingMyStack:myStackTraceVal 
-  maxMyStack:myStackTraceVal /]
+[Dropdown statesnamenew:stateName min:myMin max:myMax step:myStep def:mySliderVal changingMyStack:myStackTraceVal maxMyStack:myStackTraceMax/]
+[StateD3Component statesnamenew:stateName sliderWhich:mySliderVal stackLookingInto:myStackTraceVal/]
 
-[StateD3Component 
-  statesnamenew:stateName 
-  sliderWhich:mySliderVal 
-  stackLookingInto:myStackTraceVal /]
+Number of Districts: 
+[Display value:mySliderVal /]
 
-Number of Districts: [Float position:"right"] 
-[Range 
-  value:mySliderVal 
-  min:myMin 
-  max:myMax 
-  step:myStep 
-  myState:stateName 
-  changingStack:myStackTraceVal 
-  maxStack:myStackTraceMax /]
-[Display value:mySliderVal /] [/Float]
+[Range value:mySliderVal min:myMin max:myMax step:myStep myState:stateName changingStack:myStackTraceVal maxStack:myStackTraceMax /]
+[br/]
+Recursive step of algorithm:  
+[CustomDisplay value:myStackTraceVal myCustomDisplayMax:myStackTraceMax/]
 
-Recursive Step of Splitline: [Float position:"right"] 
-[StackTrace 
-  value:myStackTraceVal 
-  min:1 
-  max:myStackTraceMax 
-  step:1 /]
-[CustomDisplay 
-  value:myStackTraceVal
-  myCustomDisplayMax:myStackTraceMax /] [/Float]
+[StackTrace value:myStackTraceVal min:1 max:myStackTraceMax step:1 /]
 
 [/Inline]
 
