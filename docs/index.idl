@@ -13,13 +13,13 @@ The [link text:"shortest splitline algorithm" href:"http://www.rangevoting.org/G
 
 Gerrymandering tends to result in odd, skinny, and sprawling districts that pack minority voters into as few districts as possible. This can lead to self-reinforced [link text:"single party domination" href:"http://www.rangevoting.org/OneParty.html" /] within a state. As an example, North Carolina has a historically high rate of gerrymandering. In the image below are the party results of the 2014 congressional elections in each Republican-drawn district.
 
-[img src:"https://cdn-images-1.medium.com/max/1600/1*sxF6Gjkpm7Ajk17i73iiNw.png" /]
+[img width:"500" src:"https://cdn-images-1.medium.com/max/1600/1*sxF6Gjkpm7Ajk17i73iiNw.png" /]
 
 As you can see, district 1 is very broad and spread out across the northern part of the state, with many small outlets branching out of it. Additionally, district 12 is long and skinny, stretching between a few urban areas in the midwestern part of the state. North Carolina's strategy for drawing districts has been to pack minority voters into districts 1 and 12, which has heavily affected the outcome of elections. More recently, the [link text:"Supreme Court rejected these two gerrymandered districts" href:"https://www.nytimes.com/2017/05/22/us/politics/supreme-court-north-carolina-congressional-districts.html" /], ruling that lawmakers factored in race in drawing them.
 
 Even with supposedly [link text:"independent or bi-partisan commissions" href:"http://www.rangevoting.org/GerryComm.html" /], gerrymandering is still a problem. For example, consider the Washington state's congressional districts from 2012, which has a five-member independent district-drawing commission.
 
-[img src:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/United_States_Congressional_Districts_in_Washington%2C_2003_%E2%80%93_2013.tif/lossless-page1-1024px-United_States_Congressional_Districts_in_Washington%2C_2003_%E2%80%93_2013.tif.png" /]
+[img width:"500" margin:"auto" src:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/United_States_Congressional_Districts_in_Washington%2C_2003_%E2%80%93_2013.tif/lossless-page1-1024px-United_States_Congressional_Districts_in_Washington%2C_2003_%E2%80%93_2013.tif.png" /]
 
 Here, you can see that districts 1 and 7 start on land and stretch across the Puget Sound to even more land.
 
@@ -56,11 +56,11 @@ After doing this, we find the shortest splitline that gives us an A:B population
 
 1) If there is an exact length tie for shortest line, then use the line closest to a North-South orientation. If still a tie, use the westernmost dividing line.
 
-2) If the region is nonconvex, a line could split it into more than two pieces, which, though rare, can still occur. As an example, consider a NW-SE splitline on Florida:
+2) If the region is nonconvex, a line could split it into more than two pieces, which, though rare, could still occur. As an example, consider a NW-SE splitline on Florida:
 
 [img width:"300" layout:centered src:"images/nonconvex.jpg" /]
 
-The algorithm disregards this case so that the length of the splitline, regardless of the shape of the region, is equal to the distance between the two furthest points of the line that both lie WITHIN the region being split.
+The algorithm disregards this case so that the length of the splitline, regardless of the shape of the region, is equal to the distance between the two furthest points of the line that both lie WITHIN the region being split. In the example above, then, the region being split is the entire state of Florida, and the splitline would run from point A to point B, which both lie within the region being split.
 
 3) If someone's residence is split in two by a splitline, then they are declared to lie in the westernmost, or northernmost if line is EW, of the two districts.
 
@@ -107,12 +107,18 @@ In addition, the algorithm generally results in simple-shaped districts. This ma
 
 Nonetheless, the disadvantage to the algorithm is that it ignores geographic features (ex: rivers and highways) as well as political features (ex: county boundaries). Sometimes, politicians will use such features to deny people fair representation, as in this example of congressional districts in Chicago, Illinois.
 
-[img src:"http://www.rangevoting.org/ChicagoCloseup.gif" /]
+[img width:"500" src:"http://www.rangevoting.org/ChicagoCloseup.gif" /]
 
 Many of these districts have small outcroppings, such as in district 1 and 10. However, look closely at district 4, which wraps westwards and around district 7 to another broad region. The thin strip actually lies entirely inside a highway, connecting the two larger regions that comprise district 4.
 
 # Conclusion
 The shortest splitline algorithm can be used for unbiased political districting, as a replacement for the practice of gerrymandering. Rather than purposely giving one political party of group an advantage, the algorithm disregards party affiliations by splitting regions based on population. There are some disadvantages to the algorithm, namely that it ignores geographic and political features, but these disadvantages are small in comparison to having a less corrupt, more democratic government that allows for fair representation.
+
+## References
+
+[link text:"The website we referenced for information on the algorithm and the pseudocode" href:"http://www.rangevoting.org/GerryExamples.html" /].
+
+[link text:"A short video that briefly describes the algorithm" href:"https://l.messenger.com/l.php?u=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DkUS9uvYyn3A&h=ATO3wgSm5BhKXAowOzVL7wOulvkREiIk4ewVKSwLeSsAxUbzdSeOSmThoqgZADk1AO0voDqwH_C4X-6mLc-fnskwab2O-G6sdt-bhzlMOGQ5RbAK3wY7TSv0NI_tSUpe5phIa3DuwO-r&s=1&enc=AZMsXtZ0o4qkKDmcIUj3xF4p7Zwk1VWyni5Ks49AEZvLfmrKxlaYMz32jn21J92tJ3nMr1jg5Myl_5OprYqYbvsYonna9laf4mMRaOzocTDhRA" /].
 
 [/section]
 
@@ -132,8 +138,12 @@ The shortest splitline algorithm can be used for unbiased political districting,
 
 [StateD3Component statesNameNew:stateName sliderWhich:mySliderVal stackLookingInto:myStackTraceVal/]
 
+Districts
+
 [Range value:mySliderVal min:myMin max:myMax step:myStep myState:stateName changingStack:myStackTraceVal maxStack:myStackTraceMax /]
 [Display value:mySliderVal /]
+
+Step of Splitline
 
 [StackTrace value:myStackTraceVal min:1 max:myStackTraceMax step:1 /]
 [Display value:myStackTraceVal /]
