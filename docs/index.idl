@@ -134,18 +134,14 @@ The shortest splitline algorithm can be used for unbiased political districting,
 [var name:"myStackTraceVal" value:10 /]
 [var name:"myStackTraceMax" value:10 /]
 
-[Dropdown statesNameNew:stateName min:myMin max:myMax step:myStep def:mySliderVal/]
+Choose what state to visualize: [Dropdown statesNameNew:stateName min:myMin max:myMax step:myStep def:mySliderVal/]
 
 [StateD3Component statesNameNew:stateName sliderWhich:mySliderVal stackLookingInto:myStackTraceVal/]
 
-Districts
-
-[Range value:mySliderVal min:myMin max:myMax step:myStep myState:stateName changingStack:myStackTraceVal maxStack:myStackTraceMax /]
+Number of Districts: [Range value:mySliderVal min:myMin max:myMax step:myStep myState:stateName changingStack:myStackTraceVal maxStack:myStackTraceMax /]
 [Display value:mySliderVal /]
 
-Step of Splitline
-
-[StackTrace value:myStackTraceVal min:1 max:myStackTraceMax step:1 /]
+Step of Splitline [StackTrace value:myStackTraceVal min:1 max:myStackTraceMax step:1 /]
 [Display value:myStackTraceVal /]
 
 [/Inline]
