@@ -532,7 +532,9 @@ var StateD3Component = function (_D3Component) {
                 allPolygons.push(svg.append("polygon").attr("points", strPoints).attr("style", "fill:white;stroke:black;stroke-width:1"));
                 console.log("33");
 
-                allPoints.push(svg.selectAll(".pin").data(myAllPeopleData[stateNameLocal]).enter().append("circle", ".pin").attr("r", 3).attr("transform", function (d) {
+                allPoints.push(svg.selectAll(".pin").data(myAllPeopleData[stateNameLocal]).enter().append("circle", ".pin").attr("r", function (d) {
+                    return d.people / 1000;
+                }).attr("transform", function (d) {
                     return "translate(" + d.x + ", " + d.y + ")";
                 }).attr("z-index", "100").attr("fill", function (d) {
                     // dems/gop
@@ -574,7 +576,9 @@ var StateD3Component = function (_D3Component) {
 
                 allPolygons.push(svg.append("polygon").attr("points", strPoints).attr("style", "fill:white;stroke:black;stroke-width:1"));
 
-                allPoints.push(svg.selectAll(".pin").data(myAllPeopleData[stateNameLocal]).enter().append("circle", ".pin").attr("r", 3).attr("transform", function (d) {
+                allPoints.push(svg.selectAll(".pin").data(myAllPeopleData[stateNameLocal]).enter().append("circle", ".pin").attr("r", function (d) {
+                    return d.people / 1000;
+                }).attr("transform", function (d) {
                     return "translate(" + d.x + ", " + d.y + ")";
                 }).attr("z-index", "100").attr("fill", function (d) {
                     // dems/gop
@@ -813,7 +817,9 @@ var StateD3Component = function (_D3Component) {
 
                 strPoints = strPoints.trim();
                 allPolygons.push(svg.append("polygon").attr("points", strPoints).attr("style", "fill:white;stroke:black;stroke-width:1"));
-                allPoints.push(svg.selectAll(".pin").data(myAllPeopleData[stateNameLocal]).enter().append("circle", ".pin").attr("r", 3).attr("transform", function (d) {
+                allPoints.push(svg.selectAll(".pin").data(myAllPeopleData[stateNameLocal]).enter().append("circle", ".pin").attr("r", function (d) {
+                    return d.people / 1000;
+                }).attr("transform", function (d) {
                     return "translate(" + d.x + ", " + d.y + ")";
                 }).attr("z-index", "100").attr("fill", function (d) {
                     // dems/gop
