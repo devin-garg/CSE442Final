@@ -49,7 +49,9 @@ class StateD3Component extends D3Component {
             
             allPoints.push(svg.selectAll(".pin").data(myAllPeopleData[stateNameLocal])
                 .enter().append("circle", ".pin")
-                .attr("r", 3)
+                .attr("r", function(d) {
+                    return d.people/1000
+                })
                 .attr("transform", function(d) {
                     return "translate(" + 
                         d.x
@@ -103,7 +105,9 @@ class StateD3Component extends D3Component {
             
             allPoints.push(svg.selectAll(".pin").data(myAllPeopleData[stateNameLocal])
                 .enter().append("circle", ".pin")
-                .attr("r", 3)
+                .attr("r", function(d) {
+                    return d.people/1000
+                })
                 .attr("transform", function(d) {
                     return "translate(" + 
                         d.x
@@ -368,7 +372,9 @@ class StateD3Component extends D3Component {
                 .attr("style","fill:white;stroke:black;stroke-width:1"))
             allPoints.push(svg.selectAll(".pin").data(myAllPeopleData[stateNameLocal])
                 .enter().append("circle", ".pin")
-                .attr("r", 3)
+                .attr("r", function(d) {
+                    return d.people/1000
+                })
                 .attr("transform", function(d) {
                     return "translate(" + 
                         d.x
